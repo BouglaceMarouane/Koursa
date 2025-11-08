@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Koursa</string>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+    <string-array name="license_types">
+        <item>Permis A</item>
+        <item>Permis B</item>
+        <item>Permis C</item>
+        <item>Permis D</item>
+    </string-array>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>

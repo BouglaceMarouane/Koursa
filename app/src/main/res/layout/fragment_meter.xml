@@ -1,0 +1,221 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
+
+    <!-- Conteneur principal centré -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="20dp"> <!-- Ajout de padding pour espacer les bords -->
+
+        <!-- Titre -->
+        <TextView
+            style="@style/titresClair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TAXIMETER"
+            android:layout_marginBottom="20dp" /> <!-- Marge pour espacer du logo -->
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@drawable/gradient_background"
+            app:cardCornerRadius="40dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/lamp"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/titresClair2"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grisClair"
+                    android:text="TOTAL" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        style="@style/textStyleChrono"
+                        android:gravity="end"
+                        android:paddingEnd="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="888.88"
+                        android:textColor="@color/gris"
+                        android:textSize="100dp"/>
+                    <TextView
+                        android:id="@+id/tvTotalAPayer"
+                        style="@style/textStyleChrono"
+                        android:gravity="end"
+                        android:paddingEnd="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2.50"
+                        android:textSize="100dp"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    style="@style/textStyle"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dhs" />
+
+                <!-- Informations supplémentaires -->
+                <LinearLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="20dp">
+
+                    <!-- Bloc Temps -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp"
+                        android:gravity="center"
+                        android:layout_weight="1">
+                        <TextView
+                            style="@style/textStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Temps"/> <!-- Espacement entre texte -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                style="@style/textStyleChrono"
+                                android:gravity="end"
+                                android:paddingEnd="30dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="888:88"
+                                android:textColor="@color/gris"/>
+                            <TextView
+                                android:id="@+id/tvTempsEcoule"
+                                style="@style/textStyleChrono"
+                                android:gravity="end"
+                                android:paddingEnd="30dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="00:00"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            style="@style/textStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="m" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp"
+                        android:gravity="center"
+                        android:layout_weight="1">
+                        <TextView
+                            style="@style/textStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Distance"/>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                style="@style/textStyleChrono"
+                                android:gravity="end"
+                                android:paddingEnd="30dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="888.88"
+                                android:textColor="@color/gris"/>
+                            <TextView
+                                android:id="@+id/tvDistance"
+                                style="@style/textStyleChrono"
+                                android:gravity="end"
+                                android:paddingEnd="30dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="00.00"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            style="@style/textStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="km"/>
+                    </LinearLayout>
+                    <!-- Bloc Distance -->
+
+
+
+                </LinearLayout>
+                <Button
+                    android:id="@+id/btnDemarrerTaxi"
+                    style="@style/titresSombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/jauneTaxi"
+                    android:text="DÉMARRER"
+                    app:layout_constraintTop_toBottomOf="@id/layout1"
+                    android:gravity="bottom"
+                    android:layout_marginTop="20dp" />
+
+            </LinearLayout>
+
+
+
+
+        </androidx.cardview.widget.CardView>
+        <!-- Bouton de démarrage -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnReset"
+                style="@style/titresClair2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/bleu"
+                android:text="RESET"
+                app:layout_constraintTop_toBottomOf="@id/layout1"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/btnStop"
+                style="@style/titresClair2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/rouge"
+                android:text="STOP"
+                app:layout_constraintTop_toBottomOf="@id/layout1"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

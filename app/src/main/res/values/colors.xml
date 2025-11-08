@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="jauneTaxi">#FFD700</color>
+    <color name="rouge">#FF0000</color>
+    <color name="vert">#28A745</color>
+    <color name="grisClair">#D3D3D3</color>
+    <color name="grisSombre">#343A40</color>
+    <color name="gris">#141414</color>
+    <color name="bleu">#007BFF</color>
+    <color name="bleuClair">#E0F7FF</color>
+</resources>
