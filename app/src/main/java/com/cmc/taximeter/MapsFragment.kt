@@ -1,10 +1,15 @@
 package com.cmc.taximeter
 
 import android.Manifest
+import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
+import android.provider.Settings
 import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -82,8 +87,12 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED -> {
-                // Permission granted, enable location
-                enableMyLocation()
+                // Permission granted, check if GPS is enabled
+                if (isLocationEnabled()) {
+                    enableMyLocation()
+                } else {
+                    showGPSDisabledDialog()
+                }
             }
             shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION) -> {
                 // Show explanation and request permission
@@ -99,6 +108,33 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
                 requestLocationPermission()
             }
         }
+    }
+
+    private fun isLocationEnabled(): Boolean {
+        val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+    }
+
+    private fun showGPSDisabledDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Localisation désactivée")
+            .setMessage("Veuillez activer la localisation pour utiliser cette fonctionnalité")
+            .setPositiveButton("Activer") { _, _ ->
+                // Open location settings
+                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                startActivity(intent)
+            }
+            .setNegativeButton("Annuler") { dialog, _ ->
+                dialog.dismiss()
+                Toast.makeText(
+                    requireContext(),
+                    "L'application ne peut pas fonctionner sans localisation",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            .setCancelable(false)
+            .show()
     }
 
     private fun requestLocationPermission() {
@@ -120,6 +156,12 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
             return
         }
 
+        // Check again if location is enabled before proceeding
+        if (!isLocationEnabled()) {
+            showGPSDisabledDialog()
+            return
+        }
+
         try {
             map.isMyLocationEnabled = true
             startLocationUpdates()
@@ -130,6 +172,12 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
                     val userLocation = LatLng(it.latitude, it.longitude)
                     map.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
                 }
+            }.addOnFailureListener {
+                Toast.makeText(
+                    requireContext(),
+                    "Impossible d'obtenir votre position",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         } catch (e: SecurityException) {
             Toast.makeText(requireContext(), "Erreur de permission: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -137,6 +185,12 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
     }
 
     private fun startLocationUpdates() {
+        // Check if location is enabled before starting updates
+        if (!isLocationEnabled()) {
+            showGPSDisabledDialog()
+            return
+        }
+
         val locationRequest = LocationRequest.create().apply {
             interval = 2000 // 2 seconds update
             fastestInterval = 1000
@@ -187,10 +241,15 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
 
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted
-                if (::map.isInitialized) {
-                    enableMyLocation()
-                    Toast.makeText(requireContext(), "Permission accordée", Toast.LENGTH_SHORT).show()
+                // Permission granted, now check if GPS is enabled
+                if (isLocationEnabled()) {
+                    if (::map.isInitialized) {
+                        enableMyLocation()
+                        Toast.makeText(requireContext(), "Permission accordée", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    // GPS is off, show dialog
+                    showGPSDisabledDialog()
                 }
             } else {
                 // Permission denied
@@ -211,14 +270,23 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
 
     override fun onResume() {
         super.onResume()
-        // Resume location updates if permission is granted
-        if (::map.isInitialized &&
-            ContextCompat.checkSelfPermission(
+
+        // Check if permission is granted
+        if (ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            startLocationUpdates()
+            // Check if GPS is enabled
+            if (isLocationEnabled()) {
+                // Resume location updates
+                if (::map.isInitialized) {
+                    startLocationUpdates()
+                }
+            } else {
+                // GPS was turned off, show dialog
+                showGPSDisabledDialog()
+            }
         }
     }
 

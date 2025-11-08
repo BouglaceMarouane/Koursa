@@ -161,6 +161,7 @@ class AuthenticationActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         // Prevent going back to onboarding or splash
         finishAffinity()
     }
