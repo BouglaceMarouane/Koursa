@@ -30,10 +30,10 @@ class AuthenticationActivity : AppCompatActivity() {
         // Set status bar to black
         window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
-        // Check if user is already logged in
-        checkIfUserLoggedIn()
-
         setContentView(R.layout.activity_authentication)
+
+        // Check if user is already logged in (AFTER setContentView)
+        checkIfUserLoggedIn()
 
         // Initialize views
         initializeViews()
@@ -161,7 +161,6 @@ class AuthenticationActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         // Prevent going back to onboarding or splash
         finishAffinity()
     }

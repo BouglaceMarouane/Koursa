@@ -143,7 +143,7 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
     }
 
     private suspend fun obtenirLocalisation(): Location? {
-        return withContext(Dispatchers.IO) {
+        return withContext(Dispatchers.IO) @androidx.annotation.RequiresPermission(allOf = [android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION]) {
             try {
                 val resultatLocalisation: Task<Location> = clientLocalisation.lastLocation
                 val localisation = Tasks.await(resultatLocalisation)

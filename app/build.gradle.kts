@@ -64,4 +64,5 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.0")
 
     implementation("pub.devrel:easypermissions:3.0.0")
+
 }

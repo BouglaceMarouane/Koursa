@@ -9,7 +9,6 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
-import com.cmc.taximeter.OnboardingAdapter
 
 class OnboardingActivity : AppCompatActivity() {
 
@@ -48,10 +47,11 @@ class OnboardingActivity : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
         // Check if onboarding has been completed
-        val sharedPreferences = getSharedPreferences("OnboardingPrefs", MODE_PRIVATE)
-        val isOnboardingCompleted = sharedPreferences.getBoolean("onboarding_completed", false)
+        // CHANGED: Use "UserPreferences" instead of "OnboardingPrefs" to match SplashActivity
+        val sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE)
+        val hasSeenOnboarding = sharedPreferences.getBoolean("hasSeenOnboarding", false)
 
-        if (isOnboardingCompleted) {
+        if (hasSeenOnboarding) {
             navigateToAuth()
             return
         }
@@ -126,8 +126,9 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun completeOnboarding() {
-        val sharedPreferences = getSharedPreferences("OnboardingPrefs", MODE_PRIVATE)
-        sharedPreferences.edit().putBoolean("onboarding_completed", true).apply()
+        // CHANGED: Use "UserPreferences" and "hasSeenOnboarding" to match SplashActivity
+        val sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE)
+        sharedPreferences.edit().putBoolean("hasSeenOnboarding", true).apply()
         navigateToAuth()
     }
 
@@ -135,6 +136,11 @@ class OnboardingActivity : AppCompatActivity() {
         val intent = Intent(this, AuthenticationActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    override fun onBackPressed() {
+        // Prevent going back to splash
+        finishAffinity()
     }
 }
 
