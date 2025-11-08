@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Looper
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
@@ -26,20 +27,19 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
     private lateinit var map: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var driverMarker: Marker? = null
+    private lateinit var locationCallback: LocationCallback
 
     companion object {
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1001
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ✅ Make the map fullscreen (hide status + action bar)
-        requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-        requireActivity().actionBar?.hide()
-        (requireActivity() as? AppCompatActivity)?.supportActionBar?.hide()
+        // Set status bar to black
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.black)
 
-        // ✅ Check Google Play Services availability
+        // Check Google Play Services availability
         val googleApiAvailability = GoogleApiAvailability.getInstance()
         val status = googleApiAvailability.isGooglePlayServicesAvailable(requireContext())
         if (status != ConnectionResult.SUCCESS) {
@@ -47,33 +47,92 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
             return
         }
 
-        // ✅ Initialize location provider
+        // Initialize location provider
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
-        // ✅ Load the map
-        val mapFragment =
-            childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+        // Initialize location callback
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult) {
+                locationResult.lastLocation?.let { location ->
+                    updateLocationOnMap(location)
+                }
+            }
+        }
+
+        // Load the map
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+        mapFragment?.getMapAsync(this)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-        map.uiSettings.isZoomControlsEnabled = true
+        map.uiSettings.apply {
+            isZoomControlsEnabled = true
+            isMyLocationButtonEnabled = true
+            isCompassEnabled = true
+        }
 
-        // ✅ Check for location permissions
-        if (ContextCompat.checkSelfPermission(
+        // Check and request permissions
+        checkLocationPermission()
+    }
+
+    private fun checkLocationPermission() {
+        when {
+            ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                // Permission granted, enable location
+                enableMyLocation()
+            }
+            shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION) -> {
+                // Show explanation and request permission
+                Toast.makeText(
+                    requireContext(),
+                    "L'application a besoin d'accéder à votre position pour fonctionner",
+                    Toast.LENGTH_LONG
+                ).show()
+                requestLocationPermission()
+            }
+            else -> {
+                // Request permission directly
+                requestLocationPermission()
+            }
+        }
+    }
+
+    private fun requestLocationPermission() {
+        requestPermissions(
+            arrayOf(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ),
+            LOCATION_PERMISSION_REQUEST_CODE
+        )
+    }
+
+    private fun enableMyLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
         ) {
-            startLocationUpdates()
+            return
+        }
+
+        try {
             map.isMyLocationEnabled = true
-        } else {
-            // ✅ Ask for permission
-            requestPermissions(
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                LOCATION_PERMISSION_REQUEST_CODE
-            )
+            startLocationUpdates()
+
+            // Get last known location
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                location?.let {
+                    val userLocation = LatLng(it.latitude, it.longitude)
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
+                }
+            }
+        } catch (e: SecurityException) {
+            Toast.makeText(requireContext(), "Erreur de permission: ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -84,12 +143,12 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         }
 
-        val locationCallback = object : LocationCallback() {
-            override fun onLocationResult(locationResult: LocationResult) {
-                for (location in locationResult.locations) {
-                    updateLocationOnMap(location)
-                }
-            }
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
         }
 
         try {
@@ -99,7 +158,7 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
                 Looper.getMainLooper()
             )
         } catch (e: SecurityException) {
-            e.printStackTrace()
+            Toast.makeText(requireContext(), "Erreur: ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -108,13 +167,15 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
 
         if (driverMarker == null) {
             driverMarker = map.addMarker(
-                MarkerOptions().position(userLocation).title("Position du Chauffeur")
+                MarkerOptions()
+                    .position(userLocation)
+                    .title("Ma Position")
             )
+            // Only animate on first location
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
         } else {
             driverMarker?.position = userLocation
         }
-
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
     }
 
     override fun onRequestPermissionsResult(
@@ -126,24 +187,44 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
 
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted
                 if (::map.isInitialized) {
-                    map.isMyLocationEnabled = true
-                    startLocationUpdates()
+                    enableMyLocation()
+                    Toast.makeText(requireContext(), "Permission accordée", Toast.LENGTH_SHORT).show()
                 }
             } else {
+                // Permission denied
                 Toast.makeText(
                     requireContext(),
-                    "Permission de localisation refusée",
-                    Toast.LENGTH_SHORT
+                    "Permission refusée. L'application ne peut pas accéder à votre position",
+                    Toast.LENGTH_LONG
                 ).show()
             }
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        // Stop location updates when fragment is not visible
+        fusedLocationClient.removeLocationUpdates(locationCallback)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Resume location updates if permission is granted
+        if (::map.isInitialized &&
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            startLocationUpdates()
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        // ✅ Restore status bar visibility when leaving the map
-        requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-        (requireActivity() as? AppCompatActivity)?.supportActionBar?.show()
+        // Clean up location updates
+        fusedLocationClient.removeLocationUpdates(locationCallback)
     }
 }
