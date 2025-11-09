@@ -18,10 +18,6 @@ android {
     }
 
     buildTypes {
-        debug{
-            // This will clear app data on each install during debug
-            applicationIdSuffix = ".debug"
-        }
         release {
             isMinifyEnabled = false
             proguardFiles(
