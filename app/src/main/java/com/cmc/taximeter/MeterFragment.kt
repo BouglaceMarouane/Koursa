@@ -397,14 +397,14 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
      */
     private fun showEnableLocationDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Localisation désactivée")  // Location disabled
-            .setMessage("Veuillez activer la localisation pour utiliser le compteur")
+            .setTitle("Location Disabled")  // Location disabled
+            .setMessage("Please enable location to use the meter")
             // Please enable location to use the meter
-            .setPositiveButton("Activer") { _, _ ->
+            .setPositiveButton("Enable") { _, _ ->
                 // Open location settings
                 startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
             }
-            .setNegativeButton("Annuler", null)  // Cancel
+            .setNegativeButton("Cancel", null)  // Cancel
             .show()
     }
 
@@ -432,7 +432,7 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
             }
         } else {
             // Permission denied
-            Toast.makeText(requireContext(), "Permission refusée", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -466,7 +466,7 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         lastLocation = null
 
         // ===== UI UPDATES =====
-        btnStartStop.text = "Arrêter"
+        btnStartStop.text = "Stop"
         btnStartStop.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.rouge)
         btnReset.isEnabled = false  // Prevent reset during ride
 
@@ -475,7 +475,7 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         startTimer()            // Begin display updates
 
         // ===== USER FEEDBACK =====
-        Toast.makeText(requireContext(), "Course démarrée", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Ride started", Toast.LENGTH_SHORT).show()
         // Ride started
     }
 
@@ -497,7 +497,7 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         isRideActive = false
 
         // ===== UI UPDATES =====
-        btnStartStop.text = "Démarrer"
+        btnStartStop.text = "Start"
         btnStartStop.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.jauneTaxi)
         btnReset.isEnabled = true  // Re-enable reset
 
@@ -510,7 +510,7 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         showRideCompletionNotification()    // Notify user
 
         // ===== USER FEEDBACK =====
-        Toast.makeText(requireContext(), "Course terminée", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Ride completed", Toast.LENGTH_SHORT).show()
         // Ride completed
     }
 
@@ -527,13 +527,13 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         if (isRideActive) {
             // ===== ACTIVE RIDE - CONFIRM RESET =====
             AlertDialog.Builder(requireContext())
-                .setTitle("initialiser")  // Reset
-                .setMessage("Voulez-vous vraiment arrêter et initialiser la course ?")
+                .setTitle("Reset")  // Reset
+                .setMessage("Do you really want to stop and reset the ride?")
                 // Do you really want to stop and reset the ride?
-                .setPositiveButton("Oui") { _, _ ->
+                .setPositiveButton("Yes") { _, _ ->
                     doReset()
                 }
-                .setNegativeButton("Non", null)  // No
+                .setNegativeButton("No", null)  // No
                 .show()
         } else {
             // ===== INACTIVE RIDE - RESET IMMEDIATELY =====
@@ -568,12 +568,12 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         tvTotalAPayer.text = String.format("%.2f", BASE_FARE)
 
         // ===== RESET BUTTONS =====
-        btnStartStop.text = "Démarrer"
+        btnStartStop.text = "Start"
         btnStartStop.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.jauneTaxi)
         btnReset.isEnabled = true
 
         // ===== USER FEEDBACK =====
-        Toast.makeText(requireContext(), "Compteur initialisé", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Mater reset", Toast.LENGTH_SHORT).show()
         // Meter reset
     }
 
@@ -609,7 +609,7 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
                 Looper.getMainLooper()
             )
         } catch (e: SecurityException) {
-            Toast.makeText(requireContext(), "Erreur de permission", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Permission Error", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -871,29 +871,29 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
     private fun showHistoryDialog() {
         // Check if history is empty
         if (rideHistory.isEmpty()) {
-            Toast.makeText(requireContext(), "Aucune course dans l'historique", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "No rides in history", Toast.LENGTH_SHORT).show()
             // No rides in history
             return
         }
 
         // Build history text
         val historyText = buildString {
-            append("📊 HISTORIQUE DES COURSES\n\n")  // RIDE HISTORY
+            append("📊 RIDE HISTORY\n\n")  // RIDE HISTORY
             rideHistory.forEachIndexed { index, record ->
-                append("Course ${index + 1}\n")  // Ride N
+                append("Ride ${index + 1}\n")  // Ride N
                 append("Date: ${formatDate(record.date)}\n")
                 append("Distance: %.2f km\n".format(record.distance))
-                append("Temps: %.0f min\n".format(record.time))
-                append("Tarif: %.2f DH\n\n".format(record.fare))
+                append("Time: %.0f min\n".format(record.time))
+                append("Fare: %.2f DH\n\n".format(record.fare))
             }
         }
 
         // Show dialog
         AlertDialog.Builder(requireContext())
-            .setTitle("Historique")  // History
+            .setTitle("History")  // History
             .setMessage(historyText)
             .setPositiveButton("OK", null)
-            .setNeutralButton("Effacer") { _, _ ->
+            .setNeutralButton("Clear") { _, _ ->
                 // Clear button - show confirmation
                 clearHistory()
             }
@@ -907,19 +907,19 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
      */
     private fun clearHistory() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Effacer l'historique")  // Clear history
-            .setMessage("Voulez-vous vraiment effacer tout l'historique ?")
+            .setTitle("Clear History")  // Clear history
+            .setMessage("Do you really want to clear all history?")
             // Do you really want to clear all history?
-            .setPositiveButton("Oui") { _, _ ->
+            .setPositiveButton("Yes") { _, _ ->
                 // Clear memory and storage
                 rideHistory.clear()
                 val prefs = requireContext().getSharedPreferences("RideHistory", Context.MODE_PRIVATE)
                 prefs.edit().clear().apply()
 
-                Toast.makeText(requireContext(), "Historique effacé", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "History cleared", Toast.LENGTH_SHORT).show()
                 // History cleared
             }
-            .setNegativeButton("Non", null)  // No
+            .setNegativeButton("No", null)  // No
             .show()
     }
 
@@ -959,7 +959,7 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                "Notifications de course",  // Ride notifications
+                "Ride Notifications",  // Ride notifications
                 NotificationManager.IMPORTANCE_HIGH
             )
             val notificationManager = requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -974,12 +974,12 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         // ===== BUILD NOTIFICATION =====
         val notification = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
             .setSmallIcon(R.drawable.taxi)
-            .setContentTitle("Course terminée ✓")  // Ride completed
+            .setContentTitle("Ride Completed ✓")  // Ride completed
             .setContentText("%.2f km • %d min • %.2f DH".format(
                 accumulatedDistance, fare.completeMinutes, fare.total))
             // BigTextStyle shows expanded view with full breakdown
             .setStyle(NotificationCompat.BigTextStyle()
-                .bigText("Distance: %.2f km\nTemps: %d minutes\n\nBase: %.2f DH\nDistance: %.2f DH\nTemps: %.2f DH\n\nTOTAL: %.2f DH".format(
+                .bigText("Distance: %.2f km\nTime: %d minutes\n\nBase: %.2f DH\nDistance: %.2f DH\nTime: %.2f DH\n\nTOTAL: %.2f DH".format(
                     accumulatedDistance, fare.completeMinutes,
                     fare.base, fare.distance, fare.time, fare.total)))
             .setPriority(NotificationCompat.PRIORITY_HIGH)

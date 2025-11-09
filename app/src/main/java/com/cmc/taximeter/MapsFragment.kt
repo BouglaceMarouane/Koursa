@@ -224,7 +224,7 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
                 // Explain why the app needs location permission
                 Toast.makeText(
                     requireContext(),
-                    "L'application a besoin d'accéder à votre position pour fonctionner",
+                    "The app needs to access your location to function",
                     Toast.LENGTH_LONG
                 ).show()
                 // Request permission after explanation
@@ -260,8 +260,8 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
      * Displays a dialog prompting the user to enable GPS/location services.
      *
      * Dialog Actions:
-     * - "Activer" (Enable): Opens device location settings
-     * - "Annuler" (Cancel): Dismisses dialog and shows warning toast
+     * - "Enable": Opens device location settings
+     * - "Cancel": Dismisses dialog and shows warning toast
      *
      * Dialog Behavior:
      * - Cannot be cancelled by tapping outside (setCancelable(false))
@@ -272,21 +272,19 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
      */
     private fun showGPSDisabledDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Localisation désactivée")  // Location disabled
-            .setMessage("Veuillez activer la localisation pour utiliser cette fonctionnalité")
-            // Please enable location to use this feature
-            .setPositiveButton("Activer") { _, _ ->
+            .setTitle("Location Disabled")
+            .setMessage("Please enable location to use this feature")
+            .setPositiveButton("Enable") { _, _ ->
                 // Open device location settings
                 val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 startActivity(intent)
             }
-            .setNegativeButton("Annuler") { dialog, _ ->
+            .setNegativeButton("Cancel") { dialog, _ ->
                 // User cancelled - dismiss and show warning
                 dialog.dismiss()
                 Toast.makeText(
                     requireContext(),
-                    "L'application ne peut pas fonctionner sans localisation",
-                    // The app cannot function without location
+                    "The app cannot function without location",
                     Toast.LENGTH_LONG
                 ).show()
             }
@@ -350,7 +348,7 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
                     // GPS is on - enable location tracking
                     if (::map.isInitialized) {
                         enableMyLocation()
-                        Toast.makeText(requireContext(), "Permission accordée", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Permission granted", Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     // GPS is off - show dialog to enable it
@@ -360,8 +358,7 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
                 // ===== PERMISSION DENIED =====
                 Toast.makeText(
                     requireContext(),
-                    "Permission refusée. L'application ne peut pas accéder à votre position",
-                    // Permission denied. The app cannot access your location
+                    "Permission denied. The app cannot access your location",
                     Toast.LENGTH_LONG
                 ).show()
             }
@@ -437,13 +434,13 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
                 // Failed to get last location
                 Toast.makeText(
                     requireContext(),
-                    "Impossible d'obtenir votre position",  // Unable to get your position
+                    "Unable to get your location",
                     Toast.LENGTH_SHORT
                 ).show()
             }
         } catch (e: SecurityException) {
             // Permission was revoked after check (rare edge case)
-            Toast.makeText(requireContext(), "Erreur de permission: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Permission error: ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -503,7 +500,7 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
                 Looper.getMainLooper()  // Receive updates on main thread
             )
         } catch (e: SecurityException) {
-            Toast.makeText(requireContext(), "Erreur: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -511,7 +508,7 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
      * Updates the driver's position marker on the map.
      *
      * Marker Behavior:
-     * - First call: Creates new marker with title "Ma Position" (My Position)
+     * - First call: Creates new marker with title "My Position"
      * - First call: Animates camera to position
      * - Subsequent calls: Updates existing marker position
      * - Subsequent calls: No camera animation (to avoid jerky movement)
@@ -534,7 +531,7 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
             driverMarker = map.addMarker(
                 MarkerOptions()
                     .position(userLocation)
-                    .title("Ma Position")  // My Position
+                    .title("My Position")
             )
 
             // Animate camera to marker position on first location

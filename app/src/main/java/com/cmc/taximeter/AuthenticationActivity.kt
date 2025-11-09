@@ -316,12 +316,12 @@ class AuthenticationActivity : AppCompatActivity() {
      * - Read: "{email}_password" - Stored password hash for the user
      * - Write: "loggedInUser" - Email of currently authenticated user
      *
-     * Error Messages (French):
-     * - "Email invalide" - Invalid email format
-     * - "Mot de passe requis" - Password required
-     * - "Compte inexistant. Veuillez vous inscrire" - Account doesn't exist
-     * - "Mot de passe incorrect" - Incorrect password
-     * - "Connexion réussie !" - Login successful
+     * Error Messages:
+     * - "Invalid email" - Invalid email format
+     * - "Password required" - Password required
+     * - "Account does not exist. Please sign up" - Account doesn't exist
+     * - "Incorrect password" - Incorrect password
+     * - "Login successful!" - Login successful
      */
     private fun signIn() {
         // ===== INPUT RETRIEVAL =====
@@ -333,14 +333,14 @@ class AuthenticationActivity : AppCompatActivity() {
 
         // ===== EMAIL VALIDATION =====
         if (!isValidEmail(email)) {
-            edtEmail.error = "Email invalide"  // Invalid email
+            edtEmail.error = "Invalid email"
             edtEmail.requestFocus()  // Focus on email field for correction
             return  // Stop execution
         }
 
         // ===== PASSWORD VALIDATION =====
         if (password.isEmpty()) {
-            edtPassword.error = "Mot de passe requis"  // Password required
+            edtPassword.error = "Password required"
             edtPassword.requestFocus()  // Focus on password field
             return  // Stop execution
         }
@@ -356,7 +356,7 @@ class AuthenticationActivity : AppCompatActivity() {
         // Check if account exists
         if (storedPasswordHash == null) {
             // No stored hash = account doesn't exist
-            Toast.makeText(this, "Compte inexistant. Veuillez vous inscrire", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Account does not exist. Please sign up", Toast.LENGTH_LONG).show()
             return  // Stop execution - user needs to sign up first
         }
 
@@ -374,7 +374,7 @@ class AuthenticationActivity : AppCompatActivity() {
             }
 
             // Show success message to user
-            Toast.makeText(this, "Connexion réussie !", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
 
             // Navigate to main application screen
             navigateToMainActivity()
@@ -383,10 +383,10 @@ class AuthenticationActivity : AppCompatActivity() {
             // Passwords don't match - authentication failed
 
             // Show error toast
-            Toast.makeText(this, "Mot de passe incorrect", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Incorrect password", Toast.LENGTH_SHORT).show()
 
             // Show inline error on password field
-            edtPassword.error = "Mot de passe incorrect"
+            edtPassword.error = "Incorrect password"
 
             // Focus on password field for retry
             edtPassword.requestFocus()

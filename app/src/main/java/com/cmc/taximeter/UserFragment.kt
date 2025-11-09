@@ -136,7 +136,7 @@ class UserFragment : Fragment() {
             loadUserData()
         } else {
             // No email or empty email - show error
-            showError("Erreur: Utilisateur non trouvé")  // Error: User not found
+            showError("Error: User not found")
         }
 
         // ===== SETUP LISTENERS =====
@@ -177,8 +177,7 @@ class UserFragment : Fragment() {
         // ===== EDIT BUTTON =====
         // Future feature - currently shows placeholder message
         btnEdit.setOnClickListener {
-            Toast.makeText(requireContext(), "Fonctionnalité de modification bientôt disponible", Toast.LENGTH_SHORT).show()
-            // Edit functionality coming soon
+            Toast.makeText(requireContext(), "Edit functionality coming soon", Toast.LENGTH_SHORT).show()
             // TODO: Implement edit profile functionality
         }
 
@@ -207,9 +206,9 @@ class UserFragment : Fragment() {
      * - Generates and displays QR code with profile information
      *
      * Default values:
-     * - Name: "Nom Inconnu" (Unknown Name)
+     * - Name: "Unknown Name"
      * - Age: "N/A"
-     * - License: "Non spécifié" (Not specified)
+     * - License: "Not specified"
      */
     private fun loadUserData() {
         // ===== ACCESS SHARED PREFERENCES =====
@@ -217,14 +216,14 @@ class UserFragment : Fragment() {
 
         // ===== RETRIEVE USER DATA =====
         // Use email as key prefix to get user-specific data
-        val name = sharedPreferences.getString("${currentUserEmail}_name", "Nom Inconnu") ?: "Nom Inconnu"
+        val name = sharedPreferences.getString("${currentUserEmail}_name", "Unknown Name") ?: "Unknown Name"
         val age = sharedPreferences.getString("${currentUserEmail}_age", "N/A") ?: "N/A"
-        val licenseType = sharedPreferences.getString("${currentUserEmail}_licenseType", "Non spécifié") ?: "Non spécifié"
+        val licenseType = sharedPreferences.getString("${currentUserEmail}_licenseType", "Not specified") ?: "Not specified"
 
         // ===== UPDATE UI =====
         userName.text = name
         userEmail.text = currentUserEmail
-        userAge.text = "$age ans"  // "N years"
+        userAge.text = "$age years"
         userPermis.text = licenseType
 
         // ===== GENERATE QR CODE =====
@@ -240,11 +239,11 @@ class UserFragment : Fragment() {
      *
      * QR Code content format:
      * ```
-     * Chauffeur de Taxi
+     * Taxi Driver
      * ==================
-     * Nom: [name]
-     * Âge: [age] ans
-     * Permis: [licenseType]
+     * Name: [name]
+     * Age: [age] years
+     * License: [licenseType]
      * Email: [email]
      * ```
      *
@@ -265,11 +264,11 @@ class UserFragment : Fragment() {
         try {
             // ===== FORMAT QR CODE DATA =====
             val qrData = """
-                Chauffeur de Taxi
+                Taxi Driver
                 ==================
-                Nom: $name
-                Âge: $age ans
-                Permis: $licenseType
+                Name: $name
+                Age: $age years
+                License: $licenseType
                 Email: $currentUserEmail
             """.trimIndent()
 
@@ -282,8 +281,7 @@ class UserFragment : Fragment() {
         } catch (e: WriterException) {
             // ===== ERROR HANDLING =====
             e.printStackTrace()
-            Toast.makeText(requireContext(), "Erreur lors de la génération du QR code", Toast.LENGTH_SHORT).show()
-            // Error generating QR code
+            Toast.makeText(requireContext(), "Error generating QR code", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -344,21 +342,20 @@ class UserFragment : Fragment() {
      * Shows confirmation dialog before logging out.
      *
      * Dialog options:
-     * - "Oui" (Yes): Performs logout
-     * - "Annuler" (Cancel): Dismisses dialog
+     * - "Yes": Performs logout
+     * - "Cancel": Dismisses dialog
      *
      * Uses Material Design dialog for consistent UI.
      */
     private fun showLogoutConfirmationDialog() {
         MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Déconnexion")  // Logout
-            .setMessage("Êtes-vous sûr de vouloir vous déconnecter ?")
-            // Are you sure you want to logout?
-            .setPositiveButton("Oui") { _, _ ->
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to logout?")
+            .setPositiveButton("Yes") { _, _ ->
                 // User confirmed - proceed with logout
                 performLogout()
             }
-            .setNegativeButton("Annuler", null)  // Cancel - dismiss dialog
+            .setNegativeButton("Cancel", null)  // Cancel - dismiss dialog
             .show()
     }
 
@@ -386,8 +383,7 @@ class UserFragment : Fragment() {
         sharedPreferences.edit().remove("loggedInUser").apply()
 
         // ===== SHOW SUCCESS MESSAGE =====
-        Toast.makeText(requireContext(), "Déconnexion réussie", Toast.LENGTH_SHORT).show()
-        // Logout successful
+        Toast.makeText(requireContext(), "Logout successful", Toast.LENGTH_SHORT).show()
 
         // ===== NAVIGATE TO AUTHENTICATION =====
         val intent = Intent(requireActivity(), AuthenticationActivity::class.java)
@@ -412,7 +408,7 @@ class UserFragment : Fragment() {
      *
      * Error display:
      * - Shows error message as toast
-     * - Sets "Erreur" (Error) as name
+     * - Sets "Error" as name
      * - Shows error message in email field
      * - Sets "N/A" for age and license type
      *
@@ -428,7 +424,7 @@ class UserFragment : Fragment() {
         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
 
         // Update UI to show error state
-        userName.text = "Erreur"  // Error
+        userName.text = "Error"
         userEmail.text = message
         userAge.text = "N/A"
         userPermis.text = "N/A"

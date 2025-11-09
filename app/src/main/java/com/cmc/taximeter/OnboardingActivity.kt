@@ -73,26 +73,26 @@ class OnboardingActivity : AppCompatActivity() {
     private val onboardingItems = listOf(
         OnboardingItem(
             R.drawable.ic_taxi_map,
-            "Suivi en Temps Réel",  // Real-Time Tracking
-            "Suivez votre position sur la carte en temps réel avec Google Maps"
+            "Real-Time Tracking",  // Real-Time Tracking
+            "Track your position on the map in real-time with Google Maps"
             // Track your position on the map in real-time with Google Maps
         ),
         OnboardingItem(
             R.drawable.ic_calculator,
-            "Calcul Automatique",  // Automatic Calculation
-            "Le tarif est calculé automatiquement selon la distance et le temps"
+            "Automatic Calculation",  // Automatic Calculation
+            "Fare is calculated automatically based on distance and time"
             // Fare is calculated automatically based on distance and time
         ),
         OnboardingItem(
             R.drawable.ic_profile,
-            "Profil Chauffeur",  // Driver Profile
-            "Gérez votre profil et partagez vos informations via QR Code"
+            "Driver Profile",  // Driver Profile
+            "Manage your profile and share your information via QR Code"
             // Manage your profile and share your information via QR Code
         ),
         OnboardingItem(
             R.drawable.ic_notification,
             "Notifications",  // Notifications
-            "Recevez des notifications pour chaque course terminée"
+            "Receive notifications for each completed ride"
             // Receive notifications for each completed ride
         )
     )
@@ -170,11 +170,11 @@ class OnboardingActivity : AppCompatActivity() {
                 // Check if this is the last page
                 if (position == onboardingItems.size - 1) {
                     // ===== LAST PAGE =====
-                    btnNext.text = "Commencer"  // Begin/Start
+                    btnNext.text = "Start"  // Begin/Start
                     btnSkip.visibility = View.GONE  // Hide skip button
                 } else {
                     // ===== OTHER PAGES =====
-                    btnNext.text = "Suivant"  // Next
+                    btnNext.text = "Next"  // Next
                     btnSkip.visibility = View.VISIBLE  // Show skip button
                 }
             }

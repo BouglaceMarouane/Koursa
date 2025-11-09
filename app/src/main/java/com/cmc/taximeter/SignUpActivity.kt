@@ -369,31 +369,28 @@ class SignUpActivity : AppCompatActivity() {
 
         // ===== VALIDATION 1: EMAIL =====
         if (!isValidEmail(email)) {
-            edtEmail.error = "Email invalide"  // Invalid email
+            edtEmail.error = "Invalid email"
             edtEmail.requestFocus()
             return
         }
 
         // ===== VALIDATION 2: PASSWORD =====
         if (!isValidPassword(password)) {
-            edtPassword.error = "Le mot de passe doit contenir au moins $MIN_PASSWORD_LENGTH caractères"
-            // Password must contain at least N characters
+            edtPassword.error = "Password must contain at least $MIN_PASSWORD_LENGTH characters"
             edtPassword.requestFocus()
             return
         }
 
         // ===== VALIDATION 3: NAME =====
         if (!isValidName(name)) {
-            edtName.error = "Nom invalide (lettres uniquement, minimum 2 caractères)"
-            // Invalid name (letters only, minimum 2 characters)
+            edtName.error = "Invalid name (letters only, minimum 2 characters)"
             edtName.requestFocus()
             return
         }
 
         // ===== VALIDATION 4: AGE =====
         if (!isValidAge(age)) {
-            edtAge.error = "Âge invalide (entre $MIN_AGE et $MAX_AGE ans)"
-            // Invalid age (between N and M years)
+            edtAge.error = "Invalid age (between $MIN_AGE and $MAX_AGE years)"
             edtAge.requestFocus()
             return
         }
@@ -404,9 +401,8 @@ class SignUpActivity : AppCompatActivity() {
 
         if (existingPassword != null) {
             // Account with this email already exists
-            Toast.makeText(this, "Cet email est déjà utilisé", Toast.LENGTH_LONG).show()
-            // This email is already in use
-            edtEmail.error = "Email déjà utilisé"  // Email already used
+            Toast.makeText(this, "This email is already in use", Toast.LENGTH_LONG).show()
+            edtEmail.error = "Email already used"
             edtEmail.requestFocus()
             return
         }
@@ -423,8 +419,7 @@ class SignUpActivity : AppCompatActivity() {
         editor.apply()
 
         // ===== SUCCESS =====
-        Toast.makeText(this, "Inscription réussie ! Connectez-vous maintenant", Toast.LENGTH_LONG).show()
-        // Registration successful! Sign in now
+        Toast.makeText(this, "Registration successful! Sign in now", Toast.LENGTH_LONG).show()
 
         // Navigate to sign-in screen
         navigateToSignIn()

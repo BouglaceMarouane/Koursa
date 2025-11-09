@@ -20,7 +20,7 @@ import com.google.android.material.tabs.TabLayoutMediator
  * - Hosts three main fragments: Meter, Maps, and User
  *
  * Key Features:
- * - Three-tab navigation (Compteur/Meter, Carte/Map, Utilisateur/User)
+ * - Three-tab navigation (Meter, Map, User)
  * - Tab icons and labels
  * - Smooth swipe navigation between tabs
  * - Tab selection animations (scale effect)
@@ -28,9 +28,9 @@ import com.google.android.material.tabs.TabLayoutMediator
  * - Passes user email to fragments via ViewPagerAdapter
  *
  * Tabs:
- * 1. Compteur (Meter): Taximeter functionality
- * 2. Carte (Map): Real-time location tracking
- * 3. Utilisateur (User): Profile and logout
+ * 1. Meter: Taximeter functionality
+ * 2. Map: Real-time location tracking
+ * 3. User: Profile and logout
  *
  * Navigation:
  * - Swipe or tap tabs to navigate
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
      * 6. Sets up ViewPager adapter with user email
      * 7. Configures TabLayout with icons and labels
      * 8. Adds tab selection animations
-     * 9. Sets initial tab to Compteur (index 0)
+     * 9. Sets initial tab to Meter (index 0)
      *
      * @param savedInstanceState Previously saved state (if any)
      */
@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
         // ===== GET LOGGED-IN USER EMAIL =====
         // Email is needed to pass to UserFragment for profile display
         val sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE)
-        val userEmail = sharedPreferences.getString("loggedInUser", "email@exemple.com") ?: "email@exemple.com"
+        val userEmail = sharedPreferences.getString("loggedInUser", "email@example.com") ?: "email@example.com"
 
         // ===== SETUP VIEWPAGER =====
         val adapter = ViewPagerAdapter(this, userEmail)
@@ -116,17 +116,17 @@ class MainActivity : AppCompatActivity() {
                 0 -> {
                     // ===== TAB 1: METER =====
                     tab.setIcon(R.drawable.meter)
-                    tab.text = "Compteur"  // Meter
+                    tab.text = "Meter"
                 }
                 1 -> {
                     // ===== TAB 2: MAP =====
                     tab.setIcon(R.drawable.map)
-                    tab.text = "Carte"  // Map
+                    tab.text = "Map"
                 }
                 2 -> {
                     // ===== TAB 3: USER =====
                     tab.setIcon(R.drawable.user)
-                    tab.text = "Utilisateur"  // User
+                    tab.text = "User"
                 }
             }
         }.attach()  // Attach mediator to link TabLayout and ViewPager2
@@ -186,7 +186,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         // ===== SET INITIAL TAB =====
-        // Start on the Compteur (Meter) tab
+        // Start on the Meter tab
         // false = no smooth scroll animation for initial positioning
         viewPager.setCurrentItem(0, false)
     }
@@ -215,7 +215,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (viewPager.currentItem == 0) {
             // ===== ON FIRST TAB - EXIT APP =====
-            // User is on Compteur tab, so exit normally
+            // User is on Meter tab, so exit normally
             super.onBackPressed()
         } else {
             // ===== ON OTHER TABS - GO TO PREVIOUS TAB =====
