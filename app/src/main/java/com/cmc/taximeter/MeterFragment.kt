@@ -5,11 +5,13 @@ import android.app.AlertDialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.location.Location
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
-import android.os.SystemClock
+import android.os.Looper
+import android.provider.Settings
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -22,10 +24,9 @@ import com.google.android.gms.location.*
 import kotlinx.coroutines.*
 import pub.devrel.easypermissions.EasyPermissions
 import pub.devrel.easypermissions.PermissionRequest
-import android.os.Looper
-import android.content.Intent
-import android.provider.Settings
+import kotlin.math.floor
 
+// The fare only increases every 60 seconds
 class MeterFragment : Fragment(R.layout.fragment_meter) {
 
     private lateinit var tvDistance: TextView
@@ -38,29 +39,32 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
 
-    private var startTime: Long = 0
-    private var pausedTime: Long = 0
-    private var previousLocation: Location? = null
-    private var totalDistance: Float = 0f
+    // State variables
+    private var rideStartTime: Long = 0
+    private var lastLocation: Location? = null
+    private var accumulatedDistance: Double = 0.0
     private var isRideActive: Boolean = false
-    private var updateJob: Job? = null
+    private var timerJob: Job? = null
 
-    // Tarifs selon le cahier de charge
-    private val BASE_FARE: Float = 2.5f        // Tarif de base en DH
-    private val PRICE_PER_KM: Float = 1.5f     // Prix par kilomètre en DH
-    private val PRICE_PER_MINUTE: Float = 0.5f // Prix par minute en DH
+    // EXACT TARIFS FROM CAHIER DE CHARGE
+    private val BASE_FARE: Double = 2.50
+    private val PRICE_PER_KM: Double = 1.50
+    private val PRICE_PER_MINUTE: Double = 0.50
+
+    // Location tracking configuration
+    private val MIN_DISTANCE_CHANGE: Float = 5f
+    private val MIN_SPEED_THRESHOLD: Float = 0.5f
+    private val MAX_ACCURACY: Float = 20f
 
     private val PERMISSION_LOCATION_CODE = 123
     private val CHANNEL_ID = "ride_channel"
     private val NOTIFICATION_ID = 1
 
-    // Liste pour l'historique
     private val rideHistory = mutableListOf<RideRecord>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set status bar to black
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.black)
 
         initializeViews(view)
@@ -77,8 +81,10 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         btnReset = view.findViewById(R.id.btnReset)
         btnHistory = view.findViewById(R.id.btnHistory)
 
-        // Initialiser l'affichage
-        updateDisplay()
+        // Initialize display with zeros
+        tvDistance.text = "0.00"
+        tvTempsEcoule.text = "00:00"
+        tvTotalAPayer.text = String.format("%.2f", BASE_FARE)
     }
 
     private fun setupLocationClient() {
@@ -86,17 +92,39 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
 
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult) {
-                locationResult.lastLocation?.let { newLocation ->
-                    if (isRideActive && previousLocation != null) {
-                        // Calculer la distance seulement si on bouge (plus de 5 mètres)
-                        val distance = previousLocation!!.distanceTo(newLocation)
-                        if (distance > 5f) { // Filtre pour éviter les petites variations GPS
-                            totalDistance += distance
-                        }
+                for (location in locationResult.locations) {
+                    if (isRideActive) {
+                        updateLocation(location)
                     }
-                    previousLocation = newLocation
                 }
             }
+        }
+    }
+
+    private fun updateLocation(newLocation: Location) {
+        // First location - just store it
+        if (lastLocation == null) {
+            lastLocation = newLocation
+            return
+        }
+
+        // Check if moving (speed threshold)
+        if (newLocation.speed < MIN_SPEED_THRESHOLD) {
+            return
+        }
+
+        // Check GPS accuracy
+        if (newLocation.accuracy > MAX_ACCURACY) {
+            return
+        }
+
+        // Calculate distance from last location
+        val distance = lastLocation!!.distanceTo(newLocation).toDouble()
+
+        // Only count significant movements
+        if (distance >= MIN_DISTANCE_CHANGE) {
+            accumulatedDistance += distance / 1000.0 // Convert to km
+            lastLocation = newLocation
         }
     }
 
@@ -112,11 +140,7 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         }
 
         btnReset.setOnClickListener {
-            if (isRideActive) {
-                showResetConfirmationDialog()
-            } else {
-                resetRide()
-            }
+            resetRide()
         }
 
         btnHistory.setOnClickListener {
@@ -125,7 +149,6 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
     }
 
     private fun checkPermissionsAndLocation(): Boolean {
-        // Vérifier les permissions
         if (!EasyPermissions.hasPermissions(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)) {
             EasyPermissions.requestPermissions(
                 PermissionRequest.Builder(this, PERMISSION_LOCATION_CODE,
@@ -136,7 +159,6 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
             return false
         }
 
-        // Vérifier si le GPS est activé
         if (!isLocationEnabled()) {
             showEnableLocationDialog()
             return false
@@ -164,72 +186,77 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
 
     private fun startRide() {
         isRideActive = true
-        startTime = SystemClock.elapsedRealtime() - pausedTime
-        previousLocation = null
+        rideStartTime = System.currentTimeMillis()
+        accumulatedDistance = 0.0
+        lastLocation = null
 
         btnStartStop.text = "STOP"
         btnStartStop.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.rouge)
         btnReset.isEnabled = false
 
         startLocationUpdates()
-        startTimeUpdates()
+        startTimer()
 
         Toast.makeText(requireContext(), "Course démarrée", Toast.LENGTH_SHORT).show()
     }
 
     private fun stopRide() {
         isRideActive = false
-        pausedTime = SystemClock.elapsedRealtime() - startTime
 
-        btnStartStop.text = "DÉMARRER"
+        btnStartStop.text = "START"
         btnStartStop.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.jauneTaxi)
         btnReset.isEnabled = true
 
         stopLocationUpdates()
-        stopTimeUpdates()
+        stopTimer()
 
-        // Sauvegarder dans l'historique
         saveToHistory()
-
-        // Afficher la notification
         showRideCompletionNotification()
 
         Toast.makeText(requireContext(), "Course terminée", Toast.LENGTH_SHORT).show()
     }
 
     private fun resetRide() {
-        totalDistance = 0f
-        startTime = 0
-        pausedTime = 0
-        previousLocation = null
+        if (isRideActive) {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Réinitialiser")
+                .setMessage("Voulez-vous vraiment arrêter et réinitialiser la course ?")
+                .setPositiveButton("Oui") { _, _ ->
+                    doReset()
+                }
+                .setNegativeButton("Non", null)
+                .show()
+        } else {
+            doReset()
+        }
+    }
 
-        updateDisplay()
+    private fun doReset() {
+        isRideActive = false
+        stopLocationUpdates()
+        stopTimer()
 
-        btnStartStop.text = "DÉMARRER"
+        accumulatedDistance = 0.0
+        rideStartTime = 0
+        lastLocation = null
+
+        tvDistance.text = "0.00"
+        tvTempsEcoule.text = "00:00"
+        tvTotalAPayer.text = String.format("%.2f", BASE_FARE)
+
+        btnStartStop.text = "START"
         btnStartStop.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.jauneTaxi)
         btnReset.isEnabled = true
 
         Toast.makeText(requireContext(), "Compteur réinitialisé", Toast.LENGTH_SHORT).show()
     }
 
-    private fun showResetConfirmationDialog() {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Réinitialiser")
-            .setMessage("Êtes-vous sûr de vouloir arrêter et réinitialiser la course ?")
-            .setPositiveButton("Oui") { _, _ ->
-                stopRide()
-                resetRide()
-            }
-            .setNegativeButton("Non", null)
-            .show()
-    }
-
     private fun startLocationUpdates() {
         val locationRequest = LocationRequest.create().apply {
-            interval = 1000 // 1 seconde
-            fastestInterval = 500
+            interval = 1000L
+            fastestInterval = 500L
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-            smallestDisplacement = 5f // Mise à jour tous les 5 mètres minimum
+            smallestDisplacement = MIN_DISTANCE_CHANGE
         }
 
         try {
@@ -247,67 +274,67 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         fusedLocationClient.removeLocationUpdates(locationCallback)
     }
 
-    private fun startTimeUpdates() {
-        updateJob = CoroutineScope(Dispatchers.Main).launch {
+    private fun startTimer() {
+        timerJob?.cancel()
+        timerJob = CoroutineScope(Dispatchers.Main).launch {
             while (isRideActive) {
                 updateDisplay()
-                delay(1000) // Mise à jour chaque seconde
+                delay(1000)
             }
         }
     }
 
-    private fun stopTimeUpdates() {
-        updateJob?.cancel()
+    private fun stopTimer() {
+        timerJob?.cancel()
     }
 
     private fun updateDisplay() {
-        // Calcul du temps écoulé
-        val elapsedTimeMillis = if (isRideActive) {
-            SystemClock.elapsedRealtime() - startTime
-        } else {
-            pausedTime
-        }
-        val totalSeconds = elapsedTimeMillis / 1000
+        // Calculate elapsed time in seconds
+        val elapsedTimeMs = System.currentTimeMillis() - rideStartTime
+        val totalSeconds = elapsedTimeMs / 1000
+
+        // Format time as MM:SS for display
         val minutes = totalSeconds / 60
         val seconds = totalSeconds % 60
 
-        // Calcul du tarif total
-        val distanceInKm = totalDistance / 1000f
-        val timeInMinutes = totalSeconds / 60f
-        val totalFare = BASE_FARE + (distanceInKm * PRICE_PER_KM) + (timeInMinutes * PRICE_PER_MINUTE)
+        // ⭐ KEY FIX: Only charge for COMPLETE minutes (floor function)
+        val completeMinutes = floor(totalSeconds / 60.0).toInt()
 
-        // Mise à jour de l'affichage
-        tvDistance.text = String.format("%.2f", distanceInKm)
+        // Calculate fare: Base + (Distance × PricePerKm) + (CompleteMinutes × PricePerMinute)
+        val distanceFare = accumulatedDistance * PRICE_PER_KM
+        val timeFare = completeMinutes * PRICE_PER_MINUTE
+        val totalFare = BASE_FARE + distanceFare + timeFare
+
+        // Update UI
+        tvDistance.text = String.format("%.2f", accumulatedDistance)
         tvTempsEcoule.text = String.format("%02d:%02d", minutes, seconds)
         tvTotalAPayer.text = String.format("%.2f", totalFare)
     }
 
-    private fun calculateTotalFare(): Float {
-        val distanceInKm = totalDistance / 1000f
-        val elapsedTimeMillis = if (isRideActive) {
-            SystemClock.elapsedRealtime() - startTime
-        } else {
-            pausedTime
-        }
-        val timeInMinutes = (elapsedTimeMillis / 1000f) / 60f
-        return BASE_FARE + (distanceInKm * PRICE_PER_KM) + (timeInMinutes * PRICE_PER_MINUTE)
+    private fun calculateFinalFare(totalSeconds: Long): FareBreakdown {
+        val completeMinutes = floor(totalSeconds / 60.0).toInt()
+
+        val baseFare = BASE_FARE
+        val distanceFare = accumulatedDistance * PRICE_PER_KM
+        val timeFare = completeMinutes * PRICE_PER_MINUTE
+        val total = baseFare + distanceFare + timeFare
+
+        return FareBreakdown(baseFare, distanceFare, timeFare, total, completeMinutes)
     }
 
     private fun saveToHistory() {
-        val distanceInKm = totalDistance / 1000f
-        val timeInMinutes = (pausedTime / 1000f) / 60f
-        val fare = calculateTotalFare()
+        val elapsedTimeMs = System.currentTimeMillis() - rideStartTime
+        val totalSeconds = elapsedTimeMs / 1000
+        val fare = calculateFinalFare(totalSeconds)
 
         val record = RideRecord(
             date = System.currentTimeMillis(),
-            distance = distanceInKm,
-            time = timeInMinutes,
-            fare = fare
+            distance = accumulatedDistance.toFloat(),
+            time = fare.completeMinutes.toFloat(),
+            fare = fare.total.toFloat()
         )
 
-        rideHistory.add(0, record) // Ajouter au début de la liste
-
-        // Sauvegarder dans SharedPreferences
+        rideHistory.add(0, record)
         saveHistoryToPreferences()
     }
 
@@ -315,7 +342,6 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         val prefs = requireContext().getSharedPreferences("RideHistory", Context.MODE_PRIVATE)
         val editor = prefs.edit()
 
-        // Sauvegarder les 20 dernières courses
         val historyToSave = rideHistory.take(20)
         editor.putInt("history_count", historyToSave.size)
 
@@ -357,7 +383,7 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
                 append("Course ${index + 1}\n")
                 append("Date: ${formatDate(record.date)}\n")
                 append("Distance: %.2f km\n".format(record.distance))
-                append("Temps: %.1f min\n".format(record.time))
+                append("Temps: %.0f min\n".format(record.time))
                 append("Tarif: %.2f DH\n\n".format(record.fare))
             }
         }
@@ -392,7 +418,6 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
     }
 
     private fun showRideCompletionNotification() {
-        // Créer le canal de notification
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
@@ -403,18 +428,19 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
             notificationManager.createNotificationChannel(channel)
         }
 
-        val distanceInKm = totalDistance / 1000f
-        val fare = calculateTotalFare()
-        val timeInMinutes = (pausedTime / 1000f) / 60f
+        val elapsedTimeMs = System.currentTimeMillis() - rideStartTime
+        val totalSeconds = elapsedTimeMs / 1000
+        val fare = calculateFinalFare(totalSeconds)
 
-        // Créer la notification
         val notification = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
             .setSmallIcon(R.drawable.taxi)
             .setContentTitle("Course terminée ✓")
-            .setContentText("%.2f km • %.1f min • %.2f DH".format(distanceInKm, timeInMinutes, fare))
+            .setContentText("%.2f km • %d min • %.2f DH".format(
+                accumulatedDistance, fare.completeMinutes, fare.total))
             .setStyle(NotificationCompat.BigTextStyle()
-                .bigText("Distance: %.2f km\nTemps: %.1f min\nTarif total: %.2f DH".format(
-                    distanceInKm, timeInMinutes, fare)))
+                .bigText("Distance: %.2f km\nTemps: %d minutes\n\nBase: %.2f DH\nDistance: %.2f DH\nTemps: %.2f DH\n\nTOTAL: %.2f DH".format(
+                    accumulatedDistance, fare.completeMinutes,
+                    fare.base, fare.distance, fare.time, fare.total)))
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
             .build()
@@ -451,14 +477,21 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
     override fun onDestroyView() {
         super.onDestroyView()
         stopLocationUpdates()
-        stopTimeUpdates()
+        stopTimer()
     }
 
-    // Classe pour stocker les données d'une course
     data class RideRecord(
         val date: Long,
         val distance: Float,
         val time: Float,
         val fare: Float
+    )
+
+    data class FareBreakdown(
+        val base: Double,
+        val distance: Double,
+        val time: Double,
+        val total: Double,
+        val completeMinutes: Int
     )
 }
