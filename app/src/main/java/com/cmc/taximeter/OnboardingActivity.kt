@@ -70,33 +70,33 @@ class OnboardingActivity : AppCompatActivity() {
      * - Title text
      * - Description text
      */
+
     private val onboardingItems = listOf(
         OnboardingItem(
-            R.drawable.ic_taxi_map,
-            "Real-Time Tracking",  // Real-Time Tracking
-            "Track your position on the map in real-time with Google Maps"
-            // Track your position on the map in real-time with Google Maps
+            image = null,
+            lottieFile = R.raw.lottie_money,
+            title = "Real-Time Tracking",
+            description = "Track your position on the map in real-time with Google Maps"
         ),
         OnboardingItem(
-            R.drawable.ic_calculator,
-            "Automatic Calculation",  // Automatic Calculation
-            "Fare is calculated automatically based on distance and time"
-            // Fare is calculated automatically based on distance and time
+            image = null,
+            lottieFile = R.raw.lottie_location,
+            title = "Automatic Calculation",
+            description = "Fare is calculated automatically based on distance and time"
         ),
         OnboardingItem(
-            R.drawable.ic_profile,
-            "Driver Profile",  // Driver Profile
-            "Manage your profile and share your information via QR Code"
-            // Manage your profile and share your information via QR Code
+            image = null,
+            lottieFile = R.raw.lottie_chart,
+            title = "Complete Trip History",
+            description = "View and manage all your past trips with detailed statistics"
         ),
         OnboardingItem(
-            R.drawable.ic_notification,
-            "Notifications",  // Notifications
-            "Receive notifications for each completed ride"
-            // Receive notifications for each completed ride
+            image = null,
+            lottieFile = R.raw.lottie_taxi,
+            title = "Let's Get Started!",
+            description = "Join thousands of drivers using our smart taxi meter"
         )
     )
-
     // ============================================
     // LIFECYCLE METHODS
     // ============================================
@@ -327,11 +327,13 @@ class OnboardingActivity : AppCompatActivity() {
  * Represents a single onboarding page.
  *
  * @property image Drawable resource ID for the page image
+ * @property lottie Drawable resource ID for the page Lottie option
  * @property title Title text displayed on the page
  * @property description Description text displayed on the page
  */
 data class OnboardingItem(
-    val image: Int,
+    val image: Int?,              // Make nullable
+    val lottieFile: Int?,         // Add Lottie option
     val title: String,
     val description: String
 )

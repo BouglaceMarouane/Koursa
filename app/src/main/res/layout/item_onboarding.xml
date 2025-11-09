@@ -1,44 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="40dp"
-    android:background="@color/black">
+    android:background="@color/black"
+    android:padding="32dp">
 
-    <!-- Image with yellow tint -->
+    <!-- Lottie Animation View -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimation"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="70dp"
+        android:visibility="visible"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Static Image (fallback) -->
     <ImageView
         android:id="@+id/ivOnboarding"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
-        android:layout_marginBottom="50dp"
-        android:src="@drawable/ic_taxi_map"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="80dp"
         android:scaleType="fitCenter"
-        android:tint="@color/jauneTaxi" />
+        android:tint="@color/jauneTaxi"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Title in white -->
+    <!-- Title -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Titre"
-        android:textSize="32sp"
+        android:layout_marginTop="28dp"
+        android:text="Title"
+        android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:layout_marginBottom="20dp"
-        android:gravity="center" />
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/lottieAnimation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Description in white -->
+    <!-- Description -->
     <TextView
         android:id="@+id/tvDescription"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
         android:text="Description"
-        android:textSize="18sp"
-        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textColor="#B0B0B0"
         android:gravity="center"
-        android:lineSpacingExtra="6dp"
-        android:alpha="0.9" />
+        android:lineSpacingExtra="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="24dp" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
