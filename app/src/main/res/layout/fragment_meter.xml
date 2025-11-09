@@ -14,10 +14,11 @@
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_history"
         android:tint="@color/white"
+        android:contentDescription="@string/meter_history_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Conteneur principal centré -->
+    <!-- Main Container -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,12 +30,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:padding="20dp">
 
-        <!-- Titre -->
+        <!-- Title -->
         <TextView
             style="@style/titresClair"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Conteur"
+            android:text="@string/tab_meter"
             android:textColor="@color/white"
             android:layout_marginBottom="20dp" />
 
@@ -57,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/grisClair"
-                    android:text="TOTAL" />
+                    android:text="@string/meter_total_label" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -78,7 +79,7 @@
                         android:paddingEnd="50dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="2.50"
+                        android:text="@string/meter_default_distance"
                         android:textSize="100dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -89,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:text="Dhs" />
 
-                <!-- Informations supplémentaires -->
+                <!-- Additional Information -->
                 <LinearLayout
                     android:id="@+id/layout1"
                     android:layout_width="match_parent"
@@ -98,7 +99,7 @@
                     android:gravity="center"
                     android:layout_marginBottom="20dp">
 
-                    <!-- Bloc Temps -->
+                    <!-- Time Block -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -110,7 +111,7 @@
                             style="@style/textStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Temps"/>
+                            android:text="@string/meter_time_label"/>
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
@@ -129,7 +130,7 @@
                                 android:paddingEnd="30dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="00:00"/>
+                                android:text="@string/meter_default_time"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                         <TextView
                             style="@style/textStyle"
@@ -138,7 +139,7 @@
                             android:text="min" />
                     </LinearLayout>
 
-                    <!-- Bloc Distance -->
+                    <!-- Distance Block -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -150,7 +151,7 @@
                             style="@style/textStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Distance"/>
+                            android:text="@string/meter_distance_label"/>
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
@@ -169,7 +170,7 @@
                                 android:paddingEnd="30dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="00.00"/>
+                                android:text="@string/meter_default_distance"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                         <TextView
                             style="@style/textStyle"
@@ -184,8 +185,7 @@
 
         </androidx.cardview.widget.CardView>
 
-
-        !-- Action Buttons Container -->
+        <!-- Action Buttons Container -->
         <LinearLayout
             android:id="@+id/actionButtonsContainer"
             android:layout_width="match_parent"
@@ -204,8 +204,8 @@
                 android:layout_height="64dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                android:text="START"
-                android:textSize="16sp"
+                android:text="@string/meter_button_start"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 app:icon="@android:drawable/ic_media_play"
@@ -221,8 +221,8 @@
                 android:layout_height="64dp"
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
-                android:text="RESET"
-                android:textSize="16sp"
+                android:text="@string/meter_button_reset"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 app:icon="@android:drawable/ic_menu_revert"

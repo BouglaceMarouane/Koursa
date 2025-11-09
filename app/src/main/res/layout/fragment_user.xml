@@ -18,7 +18,7 @@
             android:id="@+id/tvHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mon Profil"
+            android:text="@string/user_profile_title"
             android:textColor="@color/white"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -34,6 +34,7 @@
             android:layout_marginTop="32dp"
             android:src="@drawable/taxidriver"
             android:scaleType="fitCenter"
+            android:contentDescription="@string/user_profile_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvHeader" />
@@ -44,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Nom Prénom"
+            android:text="@string/user_default_name"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -58,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="email@example.com"
+            android:text="@string/user_na"
             android:textColor="#B0B0B0"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +106,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Âge"
+                            android:text="@string/user_age_label"
                             android:textColor="#888888"
                             android:textSize="14sp" />
 
@@ -113,7 +114,7 @@
                             android:id="@+id/userAge"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="24 ans"
+                            android:text="@string/user_na"
                             android:textColor="@color/white"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -125,7 +126,8 @@
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:src="@android:drawable/ic_menu_my_calendar"
-                        android:tint="@color/jauneTaxi" />
+                        android:tint="@color/jauneTaxi"
+                        android:contentDescription="@string/user_age_label" />
 
                 </LinearLayout>
 
@@ -162,7 +164,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Type de Permis"
+                            android:text="@string/user_license_label"
                             android:textColor="#888888"
                             android:textSize="14sp" />
 
@@ -170,7 +172,7 @@
                             android:id="@+id/userPermis"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Permis B"
+                            android:text="@string/user_default_license"
                             android:textColor="@color/white"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -182,7 +184,8 @@
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:src="@android:drawable/ic_menu_preferences"
-                        android:tint="@color/jauneTaxi" />
+                        android:tint="@color/jauneTaxi"
+                        android:contentDescription="@string/user_license_label" />
 
                 </LinearLayout>
 
@@ -206,7 +209,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mon QR Code"
+                        android:text="@string/user_qr_code_title"
                         android:textColor="@color/jauneTaxi"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -225,7 +228,8 @@
                             android:layout_height="180dp"
                             android:padding="12dp"
                             android:scaleType="fitCenter"
-                            android:src="@drawable/qrcode" />
+                            android:src="@drawable/qrcode"
+                            android:contentDescription="@string/user_qr_code_title" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -260,8 +264,8 @@
                 android:layout_height="56dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                android:text="Modifier"
-                android:textSize="16sp"
+                android:text="@string/user_button_edit"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 app:icon="@android:drawable/ic_menu_edit"
@@ -276,9 +280,9 @@
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                android:text="Déconnexion"
-                android:textSize="16sp"
+                android:layout_marginStart="1dp"
+                android:text="@string/user_button_logout"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 app:icon="@android:drawable/ic_lock_power_off"

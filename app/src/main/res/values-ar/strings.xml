@@ -1,0 +1,255 @@
+<resources>
+    <!-- ============================================ -->
+    <!-- معلومات التطبيق -->
+    <!-- ============================================ -->
+    <string name="app_name">كورسة</string>
+    <string name="open_nav">فتح قائمة التنقل</string>
+    <string name="close_nav">إغلاق قائمة التنقل</string>
+    <string name="title_activity_maps">نشاط الخرائط</string>
+
+    <!-- ============================================ -->
+    <!-- نشاط المصادقة -->
+    <!-- ============================================ -->
+
+    <!-- قسم الترحيب -->
+    <string name="auth_welcome">مرحباً</string>
+    <string name="auth_subtitle">قم بتسجيل الدخول للمتابعة</string>
+
+    <!-- حقول الإدخال -->
+    <string name="auth_email_hint">البريد الإلكتروني</string>
+    <string name="auth_password_hint">كلمة المرور</string>
+
+    <!-- الأزرار -->
+    <string name="auth_sign_in_button">تسجيل الدخول</string>
+
+    <!-- الفاصل -->
+    <string name="auth_divider_or">أو</string>
+
+    <!-- التنقل -->
+    <string name="auth_go_to_signup">لم تسجل بعد؟ إنشاء حساب</string>
+
+    <!-- رسائل الخطأ -->
+    <string name="auth_error_invalid_email">البريد الإلكتروني غير صالح</string>
+    <string name="auth_error_password_required">كلمة المرور مطلوبة</string>
+    <string name="auth_error_account_not_exist">الحساب غير موجود. يرجى التسجيل</string>
+    <string name="auth_error_incorrect_password">كلمة المرور غير صحيحة</string>
+
+    <!-- رسائل النجاح -->
+    <string name="auth_success_login">تم تسجيل الدخول بنجاح!</string>
+    <string name="auth_permission_granted">تم منح الإذن</string>
+
+    <!-- ============================================ -->
+    <!-- نشاط التسجيل -->
+    <!-- ============================================ -->
+
+    <!-- العنوان -->
+    <string name="signup_title">التسجيل</string>
+    <string name="signup_subtitle">أنشئ حساب السائق الخاص بك</string>
+
+    <!-- حقول الإدخال -->
+    <string name="signup_email_hint">البريد الإلكتروني</string>
+    <string name="signup_password_hint">كلمة المرور</string>
+    <string name="signup_name_hint">الاسم الكامل</string>
+    <string name="signup_age_hint">العمر</string>
+    <string name="signup_license_hint">نوع الرخصة</string>
+
+    <!-- الأزرار -->
+    <string name="signup_button">التسجيل</string>
+
+    <!-- التنقل -->
+    <string name="signup_go_to_signin">مسجل بالفعل؟ تسجيل الدخول</string>
+
+    <!-- رسائل الخطأ -->
+    <string name="signup_error_invalid_email">البريد الإلكتروني غير صالح</string>
+    <string name="signup_error_password_min_length">يجب أن تحتوي كلمة المرور على %d حرفاً على الأقل</string>
+    <string name="signup_error_invalid_name">الاسم غير صالح (حروف فقط، حد أدنى حرفان)</string>
+    <string name="signup_error_invalid_age">العمر غير صالح (بين %d و %d سنة)</string>
+    <string name="signup_error_email_exists">هذا البريد الإلكتروني مستخدم بالفعل</string>
+    <string name="signup_error_email_already_used">البريد الإلكتروني مستخدم بالفعل</string>
+
+    <!-- رسائل النجاح -->
+    <string name="signup_success">تم التسجيل بنجاح! سجل الدخول الآن</string>
+
+    <!-- ============================================ -->
+    <!-- نشاط التعريف بالتطبيق -->
+    <!-- ============================================ -->
+
+    <!-- الصفحة 1 -->
+    <string name="onboarding_page1_title">التتبع في الوقت الفعلي</string>
+    <string name="onboarding_page1_desc">تتبع موقعك على الخريطة في الوقت الفعلي باستخدام خرائط جوجل</string>
+
+    <!-- الصفحة 2 -->
+    <string name="onboarding_page2_title">الحساب التلقائي</string>
+    <string name="onboarding_page2_desc">يتم حساب الأجرة تلقائياً حسب المسافة والوقت</string>
+
+    <!-- الصفحة 3 -->
+    <string name="onboarding_page3_title">ملف السائق</string>
+    <string name="onboarding_page3_desc">إدارة ملفك الشخصي ومشاركة معلوماتك عبر رمز الاستجابة السريعة</string>
+
+    <!-- الصفحة 4 -->
+    <string name="onboarding_page4_title">الإشعارات</string>
+    <string name="onboarding_page4_desc">استقبل إشعارات لكل رحلة مكتملة</string>
+
+    <!-- الأزرار -->
+    <string name="onboarding_button_next">التالي</string>
+    <string name="onboarding_button_start">ابدأ</string>
+    <string name="onboarding_button_skip">تخطي</string>
+
+    <!-- ============================================ -->
+    <!-- النشاط الرئيسي - التنقل بعلامات التبويب -->
+    <!-- ============================================ -->
+    <string name="tab_meter">العداد</string>
+    <string name="tab_map">الخريطة</string>
+    <string name="tab_user">المستخدم</string>
+
+    <!-- ============================================ -->
+    <!-- جزء العداد -->
+    <!-- ============================================ -->
+
+    <!-- تسميات العرض -->
+    <string name="meter_distance_label">المسافة</string>
+    <string name="meter_time_label">الوقت المنقضي</string>
+    <string name="meter_total_label">المجموع المستحق</string>
+
+    <!-- الأزرار -->
+    <string name="meter_button_start">ابدأ</string>
+    <string name="meter_button_stop">توقف</string>
+    <string name="meter_button_reset">إعادة تعيين</string>
+
+    <!-- القيم الافتراضية -->
+    <string name="meter_default_distance">0.00</string>
+    <string name="meter_default_time">00:00</string>
+
+    <!-- الرسائل -->
+    <string name="meter_ride_started">بدأت الرحلة</string>
+    <string name="meter_ride_completed">اكتملت الرحلة</string>
+    <string name="meter_meter_reset">تمت إعادة تعيين العداد</string>
+
+    <!-- مربعات الحوار -->
+    <string name="meter_dialog_reset_title">إعادة تعيين</string>
+    <string name="meter_dialog_reset_message">هل تريد حقاً إيقاف وإعادة تعيين الرحلة؟</string>
+    <string name="meter_dialog_yes">نعم</string>
+    <string name="meter_dialog_no">لا</string>
+
+    <!-- السجل -->
+    <string name="meter_history_title">السجل</string>
+    <string name="meter_history_empty">لا توجد رحلات في السجل</string>
+    <string name="meter_history_header">📊 سجل الرحلات</string>
+    <string name="meter_history_ride_number">الرحلة %d</string>
+    <string name="meter_history_date">التاريخ: %s</string>
+    <string name="meter_history_distance">المسافة: %.2f كم</string>
+    <string name="meter_history_time">الوقت: %.0f دقيقة</string>
+    <string name="meter_history_fare">الأجرة: %.2f درهم</string>
+    <string name="meter_history_clear_button">مسح</string>
+    <string name="meter_history_ok_button">حسناً</string>
+
+    <!-- حوار مسح السجل -->
+    <string name="meter_clear_history_title">مسح السجل</string>
+    <string name="meter_clear_history_message">هل تريد حقاً مسح كل السجل؟</string>
+    <string name="meter_history_cleared">تم مسح السجل</string>
+
+    <!-- أذونات الموقع -->
+    <string name="meter_location_disabled_title">الموقع معطل</string>
+    <string name="meter_location_disabled_message">يرجى تفعيل الموقع لاستخدام العداد</string>
+    <string name="meter_location_enable_button">تفعيل</string>
+    <string name="meter_location_cancel_button">إلغاء</string>
+    <string name="meter_permission_denied">تم رفض الإذن</string>
+    <string name="meter_permission_error">خطأ في الإذن</string>
+    <string name="meter_location_error">خطأ: %s</string>
+
+    <!-- الإشعار -->
+    <string name="meter_notification_channel_name">إشعارات الرحلة</string>
+    <string name="meter_notification_title">اكتملت الرحلة ✓</string>
+    <string name="meter_notification_content">%.2f كم • %d دقيقة • %.2f درهم</string>
+    <string name="meter_notification_big_text">المسافة: %.2f كم\nالوقت: %d دقيقة\n\nالأساس: %.2f درهم\nالمسافة: %.2f درهم\nالوقت: %.2f درهم\n\nالمجموع: %.2f درهم</string>
+
+    <!-- ============================================ -->
+    <!-- جزء الخرائط -->
+    <!-- ============================================ -->
+
+    <!-- العلامة -->
+    <string name="maps_marker_my_position">موقعي</string>
+
+    <!-- الأذونات -->
+    <string name="maps_permission_required">يحتاج التطبيق إلى الوصول إلى موقعك للعمل</string>
+    <string name="maps_permission_granted">تم منح الإذن</string>
+    <string name="maps_permission_denied">تم رفض الإذن. لا يمكن للتطبيق الوصول إلى موقعك</string>
+
+    <!-- الموقع -->
+    <string name="maps_location_disabled_title">الموقع معطل</string>
+    <string name="maps_location_disabled_message">يرجى تفعيل الموقع لاستخدام هذه الميزة</string>
+    <string name="maps_location_enable_button">تفعيل</string>
+    <string name="maps_location_cancel_button">إلغاء</string>
+    <string name="maps_location_required">لا يمكن للتطبيق العمل بدون الموقع</string>
+    <string name="maps_location_error">تعذر الحصول على موقعك</string>
+    <string name="maps_permission_error">خطأ في الإذن: %s</string>
+    <string name="maps_error">خطأ: %s</string>
+
+    <!-- ============================================ -->
+    <!-- جزء المستخدم -->
+    <!-- ============================================ -->
+
+    <!-- تسميات الملف الشخصي -->
+    <string name="user_profile_title">ملف السائق</string>
+    <string name="user_name_label">الاسم</string>
+    <string name="user_email_label">البريد الإلكتروني</string>
+    <string name="user_age_label">العمر</string>
+    <string name="user_license_label">الرخصة</string>
+    <string name="user_age_format">%s سنة</string>
+
+    <!-- رمز الاستجابة السريعة -->
+    <string name="user_qr_code_title">رمز الاستجابة السريعة</string>
+    <string name="user_qr_code_header">سائق تاكسي</string>
+    <string name="user_qr_code_separator">==================</string>
+    <string name="user_qr_code_name">الاسم: %s</string>
+    <string name="user_qr_code_age">العمر: %s سنة</string>
+    <string name="user_qr_code_license">الرخصة: %s</string>
+    <string name="user_qr_code_email">البريد الإلكتروني: %s</string>
+    <string name="user_qr_code_error">خطأ في إنشاء رمز الاستجابة السريعة</string>
+
+    <!-- الأزرار -->
+    <string name="user_button_edit">تعديل الملف</string>
+    <string name="user_button_logout">تسجيل الخروج</string>
+
+    <!-- ميزة التعديل -->
+    <string name="user_edit_coming_soon">ميزة التعديل قريباً</string>
+
+    <!-- تسجيل الخروج -->
+    <string name="user_logout_dialog_title">الخروج</string>
+    <string name="user_logout_dialog_message">هل أنت متأكد من رغبتك في تسجيل الخروج؟</string>
+    <string name="user_logout_yes">نعم</string>
+    <string name="user_logout_cancel">إلغاء</string>
+    <string name="user_logout_success">تم تسجيل الخروج بنجاح</string>
+
+    <!-- الخطأ -->
+    <string name="user_error_not_found">خطأ: لم يتم العثور على المستخدم</string>
+    <string name="user_error_label">خطأ</string>
+    <string name="user_na">غير متاح</string>
+
+    <!-- القيم الافتراضية -->
+    <string name="user_default_name">اسم غير معروف</string>
+    <string name="user_default_license">غير محدد</string>
+
+    <!-- ============================================ -->
+    <!-- أنواع الرخص -->
+    <!-- ============================================ -->
+    <string-array name="license_types">
+        <item>رخصة أ</item>
+        <item>رخصة ب</item>
+        <item>رخصة ج</item>
+        <item>رخصة د</item>
+    </string-array>
+
+    <!-- ============================================ -->
+    <!-- عام / مشترك -->
+    <!-- ============================================ -->
+    <string name="common_ok">حسناً</string>
+    <string name="common_cancel">إلغاء</string>
+    <string name="common_yes">نعم</string>
+    <string name="common_no">لا</string>
+    <string name="common_error">خطأ</string>
+    <string name="common_success">نجاح</string>
+    <string name="common_loading">جاري التحميل…</string>
+    <string name="common_or">أو</string>
+
+</resources>

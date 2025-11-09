@@ -21,7 +21,8 @@
             android:layout_height="200dp"
             android:layout_centerHorizontal="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/taxisplash" />
+            android:src="@drawable/taxisplash"
+            android:contentDescription="@string/app_name" />
 
         <!-- Welcome Text -->
         <TextView
@@ -31,7 +32,7 @@
             android:layout_below="@id/logoImageView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="32dp"
-            android:text="Bienvenue"
+            android:text="@string/auth_welcome"
             android:textColor="@color/white"
             android:textSize="32sp"
             android:textStyle="bold"
@@ -44,7 +45,7 @@
             android:layout_below="@id/txtWelcome"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
-            android:text="Connectez-vous pour continuer"
+            android:text="@string/auth_subtitle"
             android:textColor="#B0B0B0"
             android:textSize="16sp" />
 
@@ -62,7 +63,7 @@
                 android:id="@+id/emailInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/auth_email_hint"
                 app:hintTextColor="#B0B0B0"
                 app:boxStrokeColor="@color/jauneTaxi"
                 app:boxStrokeWidth="2dp"
@@ -95,7 +96,7 @@
                     android:id="@+id/passwordInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Mot de passe"
+                    android:hint="@string/auth_password_hint"
                     app:hintTextColor="#B0B0B0"
                     app:boxStrokeColor="@color/jauneTaxi"
                     app:boxStrokeWidth="2dp"
@@ -115,7 +116,8 @@
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:padding="16dp"
-                        android:paddingEnd="48dp" />
+                        android:paddingEnd="48dp"
+                        tools:ignore="RtlSymmetry" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,7 +130,8 @@
                     android:layout_marginEnd="8dp"
                     android:background="?android:attr/selectableItemBackground"
                     android:src="@drawable/visibility_off"
-                    android:tint="@color/jauneTaxi" />
+                    android:tint="@color/jauneTaxi"
+                    android:contentDescription="@string/auth_password_hint" />
 
             </RelativeLayout>
 
@@ -138,7 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_marginTop="32dp"
-                android:text="Se connecter"
+                android:text="@string/auth_sign_in_button"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -165,7 +168,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:text="OU"
+                    android:text="@string/auth_divider_or"
                     android:textColor="#666666"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -187,7 +190,7 @@
                 android:layout_marginTop="7dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="Pas encore inscrit ? S'inscrire"
+                android:text="@string/auth_go_to_signup"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:padding="8dp"

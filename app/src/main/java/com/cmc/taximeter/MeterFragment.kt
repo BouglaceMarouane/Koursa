@@ -466,7 +466,7 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         lastLocation = null
 
         // ===== UI UPDATES =====
-        btnStartStop.text = "STOP"
+        btnStartStop.text = "Arrêter"
         btnStartStop.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.rouge)
         btnReset.isEnabled = false  // Prevent reset during ride
 
@@ -497,7 +497,7 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         isRideActive = false
 
         // ===== UI UPDATES =====
-        btnStartStop.text = "START"
+        btnStartStop.text = "Démarrer"
         btnStartStop.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.jauneTaxi)
         btnReset.isEnabled = true  // Re-enable reset
 
@@ -527,8 +527,8 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         if (isRideActive) {
             // ===== ACTIVE RIDE - CONFIRM RESET =====
             AlertDialog.Builder(requireContext())
-                .setTitle("Réinitialiser")  // Reset
-                .setMessage("Voulez-vous vraiment arrêter et réinitialiser la course ?")
+                .setTitle("initialiser")  // Reset
+                .setMessage("Voulez-vous vraiment arrêter et initialiser la course ?")
                 // Do you really want to stop and reset the ride?
                 .setPositiveButton("Oui") { _, _ ->
                     doReset()
@@ -568,12 +568,12 @@ class MeterFragment : Fragment(R.layout.fragment_meter) {
         tvTotalAPayer.text = String.format("%.2f", BASE_FARE)
 
         // ===== RESET BUTTONS =====
-        btnStartStop.text = "START"
+        btnStartStop.text = "Démarrer"
         btnStartStop.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.jauneTaxi)
         btnReset.isEnabled = true
 
         // ===== USER FEEDBACK =====
-        Toast.makeText(requireContext(), "Compteur réinitialisé", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Compteur initialisé", Toast.LENGTH_SHORT).show()
         // Meter reset
     }
 

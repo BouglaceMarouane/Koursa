@@ -1,0 +1,255 @@
+<resources>
+    <!-- ============================================ -->
+    <!-- APP INFO -->
+    <!-- ============================================ -->
+    <string name="app_name">Koursa</string>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
+    <!-- ============================================ -->
+    <!-- AUTHENTICATION ACTIVITY -->
+    <!-- ============================================ -->
+
+    <!-- Welcome Section -->
+    <string name="auth_welcome">Welcome</string>
+    <string name="auth_subtitle">Sign in to continue</string>
+
+    <!-- Input Fields -->
+    <string name="auth_email_hint">Email</string>
+    <string name="auth_password_hint">Password</string>
+
+    <!-- Buttons -->
+    <string name="auth_sign_in_button">Sign In</string>
+
+    <!-- Divider -->
+    <string name="auth_divider_or">OR</string>
+
+    <!-- Navigation -->
+    <string name="auth_go_to_signup">Not registered yet? Sign up</string>
+
+    <!-- Error Messages -->
+    <string name="auth_error_invalid_email">Invalid email</string>
+    <string name="auth_error_password_required">Password required</string>
+    <string name="auth_error_account_not_exist">Account does not exist. Please sign up</string>
+    <string name="auth_error_incorrect_password">Incorrect password</string>
+
+    <!-- Success Messages -->
+    <string name="auth_success_login">Login successful!</string>
+    <string name="auth_permission_granted">Permission granted</string>
+
+    <!-- ============================================ -->
+    <!-- SIGN UP ACTIVITY -->
+    <!-- ============================================ -->
+
+    <!-- Title -->
+    <string name="signup_title">Sign Up</string>
+    <string name="signup_subtitle">Create your driver account</string>
+
+    <!-- Input Fields -->
+    <string name="signup_email_hint">Email</string>
+    <string name="signup_password_hint">Password</string>
+    <string name="signup_name_hint">Full Name</string>
+    <string name="signup_age_hint">Age</string>
+    <string name="signup_license_hint">License Type</string>
+
+    <!-- Buttons -->
+    <string name="signup_button">Sign Up</string>
+
+    <!-- Navigation -->
+    <string name="signup_go_to_signin">Already registered? Sign in</string>
+
+    <!-- Error Messages -->
+    <string name="signup_error_invalid_email">Invalid email</string>
+    <string name="signup_error_password_min_length">Password must contain at least %d characters</string>
+    <string name="signup_error_invalid_name">Invalid name (letters only, minimum 2 characters)</string>
+    <string name="signup_error_invalid_age">Invalid age (between %d and %d years)</string>
+    <string name="signup_error_email_exists">This email is already in use</string>
+    <string name="signup_error_email_already_used">Email already used</string>
+
+    <!-- Success Messages -->
+    <string name="signup_success">Registration successful! Sign in now</string>
+
+    <!-- ============================================ -->
+    <!-- ONBOARDING ACTIVITY -->
+    <!-- ============================================ -->
+
+    <!-- Page 1 -->
+    <string name="onboarding_page1_title">Real-Time Tracking</string>
+    <string name="onboarding_page1_desc">Track your position on the map in real-time with Google Maps</string>
+
+    <!-- Page 2 -->
+    <string name="onboarding_page2_title">Automatic Calculation</string>
+    <string name="onboarding_page2_desc">Fare is calculated automatically based on distance and time</string>
+
+    <!-- Page 3 -->
+    <string name="onboarding_page3_title">Driver Profile</string>
+    <string name="onboarding_page3_desc">Manage your profile and share your information via QR Code</string>
+
+    <!-- Page 4 -->
+    <string name="onboarding_page4_title">Notifications</string>
+    <string name="onboarding_page4_desc">Receive notifications for each completed ride</string>
+
+    <!-- Buttons -->
+    <string name="onboarding_button_next">Next</string>
+    <string name="onboarding_button_start">Start</string>
+    <string name="onboarding_button_skip">Skip</string>
+
+    <!-- ============================================ -->
+    <!-- MAIN ACTIVITY - TAB NAVIGATION -->
+    <!-- ============================================ -->
+    <string name="tab_meter">Meter</string>
+    <string name="tab_map">Map</string>
+    <string name="tab_user">User</string>
+
+    <!-- ============================================ -->
+    <!-- METER FRAGMENT -->
+    <!-- ============================================ -->
+
+    <!-- Display Labels -->
+    <string name="meter_distance_label">Distance</string>
+    <string name="meter_time_label">Time</string>
+    <string name="meter_total_label">Total to Pay</string>
+
+    <!-- Buttons -->
+    <string name="meter_button_start">START</string>
+    <string name="meter_button_stop">STOP</string>
+    <string name="meter_button_reset">Reset</string>
+
+    <!-- Default Values -->
+    <string name="meter_default_distance">0.00</string>
+    <string name="meter_default_time">00:00</string>
+
+    <!-- Messages -->
+    <string name="meter_ride_started">Ride started</string>
+    <string name="meter_ride_completed">Ride completed</string>
+    <string name="meter_meter_reset">Meter reset</string>
+
+    <!-- Dialogs -->
+    <string name="meter_dialog_reset_title">Reset</string>
+    <string name="meter_dialog_reset_message">Do you really want to stop and reset the ride?</string>
+    <string name="meter_dialog_yes">Yes</string>
+    <string name="meter_dialog_no">No</string>
+
+    <!-- History -->
+    <string name="meter_history_title">History</string>
+    <string name="meter_history_empty">No rides in history</string>
+    <string name="meter_history_header">📊 RIDE HISTORY</string>
+    <string name="meter_history_ride_number">Ride %d</string>
+    <string name="meter_history_date">Date: %s</string>
+    <string name="meter_history_distance">Distance: %.2f km</string>
+    <string name="meter_history_time">Time: %.0f min</string>
+    <string name="meter_history_fare">Fare: %.2f DH</string>
+    <string name="meter_history_clear_button">Clear</string>
+    <string name="meter_history_ok_button">OK</string>
+
+    <!-- Clear History Dialog -->
+    <string name="meter_clear_history_title">Clear History</string>
+    <string name="meter_clear_history_message">Do you really want to clear all history?</string>
+    <string name="meter_history_cleared">History cleared</string>
+
+    <!-- Location Permissions -->
+    <string name="meter_location_disabled_title">Location disabled</string>
+    <string name="meter_location_disabled_message">Please enable location to use the meter</string>
+    <string name="meter_location_enable_button">Enable</string>
+    <string name="meter_location_cancel_button">Cancel</string>
+    <string name="meter_permission_denied">Permission denied</string>
+    <string name="meter_permission_error">Permission error</string>
+    <string name="meter_location_error">Error: %s</string>
+
+    <!-- Notification -->
+    <string name="meter_notification_channel_name">Ride Notifications</string>
+    <string name="meter_notification_title">Ride completed ✓</string>
+    <string name="meter_notification_content">%.2f km • %d min • %.2f DH</string>
+    <string name="meter_notification_big_text">Distance: %.2f km\nTime: %d minutes\n\nBase: %.2f DH\nDistance: %.2f DH\nTime: %.2f DH\n\nTOTAL: %.2f DH</string>
+
+    <!-- ============================================ -->
+    <!-- MAPS FRAGMENT -->
+    <!-- ============================================ -->
+
+    <!-- Marker -->
+    <string name="maps_marker_my_position">My Position</string>
+
+    <!-- Permissions -->
+    <string name="maps_permission_required">The app needs access to your location to function</string>
+    <string name="maps_permission_granted">Permission granted</string>
+    <string name="maps_permission_denied">Permission denied. The app cannot access your location</string>
+
+    <!-- Location -->
+    <string name="maps_location_disabled_title">Location disabled</string>
+    <string name="maps_location_disabled_message">Please enable location to use this feature</string>
+    <string name="maps_location_enable_button">Enable</string>
+    <string name="maps_location_cancel_button">Cancel</string>
+    <string name="maps_location_required">The app cannot function without location</string>
+    <string name="maps_location_error">Unable to get your location</string>
+    <string name="maps_permission_error">Permission error: %s</string>
+    <string name="maps_error">Error: %s</string>
+
+    <!-- ============================================ -->
+    <!-- USER FRAGMENT -->
+    <!-- ============================================ -->
+
+    <!-- Profile Labels -->
+    <string name="user_profile_title">Driver Profile</string>
+    <string name="user_name_label">Name</string>
+    <string name="user_email_label">Email</string>
+    <string name="user_age_label">Age</string>
+    <string name="user_license_label">License</string>
+    <string name="user_age_format">%s years</string>
+
+    <!-- QR Code -->
+    <string name="user_qr_code_title">QR Code</string>
+    <string name="user_qr_code_header">Taxi Driver</string>
+    <string name="user_qr_code_separator">==================</string>
+    <string name="user_qr_code_name">Name: %s</string>
+    <string name="user_qr_code_age">Age: %s years</string>
+    <string name="user_qr_code_license">License: %s</string>
+    <string name="user_qr_code_email">Email: %s</string>
+    <string name="user_qr_code_error">Error generating QR code</string>
+
+    <!-- Buttons -->
+    <string name="user_button_edit">Edit</string>
+    <string name="user_button_logout">Logout</string>
+
+    <!-- Edit Feature -->
+    <string name="user_edit_coming_soon">Edit feature coming soon</string>
+
+    <!-- Logout -->
+    <string name="user_logout_dialog_title">Logout</string>
+    <string name="user_logout_dialog_message">Are you sure you want to logout?</string>
+    <string name="user_logout_yes">Yes</string>
+    <string name="user_logout_cancel">Cancel</string>
+    <string name="user_logout_success">Logout successful</string>
+
+    <!-- Error -->
+    <string name="user_error_not_found">Error: User not found</string>
+    <string name="user_error_label">Error</string>
+    <string name="user_na">N/A</string>
+
+    <!-- Default Values -->
+    <string name="user_default_name">Unknown Name</string>
+    <string name="user_default_license">Not specified</string>
+
+    <!-- ============================================ -->
+    <!-- LICENSE TYPES -->
+    <!-- ============================================ -->
+    <string-array name="license_types">
+        <item>License A</item>
+        <item>License B</item>
+        <item>License C</item>
+        <item>License D</item>
+    </string-array>
+
+    <!-- ============================================ -->
+    <!-- COMMON / GENERAL -->
+    <!-- ============================================ -->
+    <string name="common_ok">OK</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_yes">Yes</string>
+    <string name="common_no">No</string>
+    <string name="common_error">Error</string>
+    <string name="common_success">Success</string>
+    <string name="common_loading">Loading…</string>
+    <string name="common_or">OR</string>
+
+</resources>
