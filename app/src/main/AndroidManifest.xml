@@ -18,11 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TaxiMeter"
         tools:targetApi="31">
+
         <!--  Google Maps API Key  -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCT5dGMvySVgXxIY8Xa-31Mz1bMei8I6YY" />
-        <!--  AIzaSyDXV9R9yL2jDoUC5ssMCIRogBWVds78J4I  -->
+            android:value="${MAPS_API_KEY}" />
+
         <!--  Activities  -->
         <!--  Main Activity (Non-exported)  -->
         <activity
@@ -37,7 +38,6 @@
         <activity
             android:name=".AuthenticationActivity"
             android:exported="false" />
-
 
         <activity
             android:name=".SignUpActivity"
