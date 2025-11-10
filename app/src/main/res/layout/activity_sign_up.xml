@@ -22,7 +22,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/taxisplash" />
+            android:src="@drawable/app_logo" />
 
         <!-- Welcome Text -->
         <TextView
