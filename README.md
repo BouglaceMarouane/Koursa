@@ -5,7 +5,7 @@
 </p>-->
 
 <p align="center">
-  <img src="https://github.com/BouglaceMarouane/Koursa/blob/76066e5f1159b8b74f9a3cb8282a004611a2b530/Koursa.png" width="400px" alt="Taxi Animation"/>
+  <img src="https://github.com/BouglaceMarouane/Koursa/blob/bbf627c01395ef39d3c6d79a513fc0a566acad60/Koursa%20-%20Edited.png" width="400px" alt="Taxi Animation"/>
 </p>
 
 <div align="center">
