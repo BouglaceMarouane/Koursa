@@ -22,11 +22,11 @@
 ![Notifications](https://img.shields.io/badge/Android-Notifications-blue?style=for-the-badge&logo=android&logoColor=white)
 ![Localization](https://img.shields.io/badge/Multilingual-FR|EN|AR-yellow?style=for-the-badge)
 
----
+<br>
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/Koursa?style=social)](https://github.com/yourusername/Koursa)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/Koursa?style=social)](https://github.com/yourusername/Koursa)
-[![GitHub issues](https://img.shields.io/github/issues/yourusername/Koursa)](https://github.com/yourusername/Koursa/issues)
+  [![GitHub stars](https://img.shields.io/github/stars/bouglacemarouane/Koursa?style=social)](https://github.com/bouglacemarouane/Koursa)
+  [![GitHub forks](https://img.shields.io/github/forks/bouglacemarouane/Koursa?style=social)](https://github.com/bouglacemarouane/Koursa)
+  [![GitHub issues](https://img.shields.io/github/issues/bouglacemarouane/Koursa)](https://github.com/bouglacemarouane/Koursa/issues)
 
 </div>
 
