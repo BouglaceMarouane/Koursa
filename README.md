@@ -103,13 +103,81 @@ Total Fare = 27.5 DH
 
 </div>
 
-## 🎨 User Interface
+---
 
-| Element | Description |
-|----------|-------------|
-| ⚫ **Primary Color:** | `#000000` (Black) |
-| 🟡 **Secondary Color:** | `#FFD700` (Taxi Yellow) |
-| ⚪ **Accent Color:** | `#FFFFFF` (White) |
-| 🔵 **Highlight:** | `#007BFF` (Blue) |
-| 🟢 **Success:** | `#28A745` (Green) |
-| 🔴 **Alert:** | `#FF0000` (Red) |
+## 🛠️ Installation & Setup
+
+1️⃣ Clone the Repository
+```bash
+git clone [https://github.com/yourusername/Koursa.git](https://github.com/yourusername/Koursa.git)
+```
+
+### 2️⃣ Open in Android Studio
+- Go to File → Open.
+- Select the project folder.
+
+### 3️⃣ Add Your API Key
+Add your Google Maps API Key in AndroidManifest.xml (inside the <application> tag):
+```code
+<application>
+   <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="YOUR_API_KEY_HERE"/>
+</application>
+```
+
+4️⃣ Run the App
+- Connect an Android device or start an emulator.
+- Click ▶️ Run to start Koursa.
+---
+
+## 🤝 Contributing
+
+Contributions to this project are welcome! If you have suggestions, improvements, or bug fixes, please submit a pull request. Make sure to follow coding conventions and maintain consistent styles.
+
+If you encounter issues or want to request a new feature, please open an issue in the repository with as much detail as possible.
+
+### Ways to Contribute
+- 🐛 **Report Bugs** - Found an issue? Let us know!
+- 💡 **Suggest Features** - Have ideas? We'd love to hear them!
+- 🔧 **Submit Pull Requests** - Code contributions are welcome
+- 📖 **Improve Documentation** - Help make our docs better
+
+### Getting Started
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## ⭐ Support
+
+If you like this project, don't forget to leave a ⭐ on GitHub. Thank you and happy coding! 🚀
+
+---
+
+## 📬 Stay in Touch
+
+<div align="center">
+
+### 👨‍💻 **Marouane Bouglace** - *Project Creator*
+
+[![Email](https://img.shields.io/badge/Email-bouglacemarouane@gmail.com-red?style=for-the-badge&logo=gmail&logoColor=white)](mailto:bouglacemarouane@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-bouglacemarouane-black?style=for-the-badge&logo=github&logoColor=white)](https://github.com/bouglacemarouane)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Marouane%20Bouglace-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/marouane-bouglace)
+
+</div>
+
+---
+
+<div align="center">
+
+**Thank you for visiting Koursa! 💬✨**
+
+</div>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=60&section=footer"/>
+</p>
