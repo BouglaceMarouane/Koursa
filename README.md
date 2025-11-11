@@ -102,3 +102,14 @@ Total Fare = 27.5 DH
 ![Kotlin](https://img.shields.io/badge/Kotlin-Android-7F52FF?logo=kotlin&logoColor=white) ![Google Maps API](https://img.shields.io/badge/Google_Maps-API-4285F4?logo=googlemaps&logoColor=white) ![Fused Location](https://img.shields.io/badge/Fused_Location-GPS-34A853?logo=googleplay&logoColor=white) ![Room](https://img.shields.io/badge/Room-Database-42A5F5?logo=sqlite&logoColor=white) ![Retrofit](https://img.shields.io/badge/Retrofit-Networking-square?logo=square&logoColor=white) <br> ![Notifications](https://img.shields.io/badge/Notifications-Local_Push-FF9800?logo=android&logoColor=white) ![LottieFiles](https://img.shields.io/badge/LottieFiles-Animations-00DDB3?logo=lottiefiles&logoColor=white) ![ZXing](https://img.shields.io/badge/ZXing-QR_Code-000000?logo=android&logoColor=white)
 
 </div>
+
+## 🎨 User Interface
+
+| Element | Description |
+|----------|-------------|
+| ⚫ **Primary Color:** | `#000000` (Black) |
+| 🟡 **Secondary Color:** | `#FFD700` (Taxi Yellow) |
+| ⚪ **Accent Color:** | `#FFFFFF` (White) |
+| 🔵 **Highlight:** | `#007BFF` (Blue) |
+| 🟢 **Success:** | `#28A745` (Green) |
+| 🔴 **Alert:** | `#FF0000` (Red) |
