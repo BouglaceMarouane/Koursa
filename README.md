@@ -126,7 +126,7 @@ Total Fare = 27.5 DH
 
 1️⃣ Clone the Repository
 ```bash
-git clone [https://github.com/yourusername/Koursa.git](https://github.com/yourusername/Koursa.git)
+git clone https://github.com/<your-username>/Koursa.git
 ```
 
 ### 2️⃣ Open in Android Studio
