@@ -1,8 +1,8 @@
 # 🚖 Koursa — Smart Taxi Meter App 🌍
 
-<p align="center">
+<!--<p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=FFD700&height=100&section=header&text=Koursa%20🚖&fontSize=45&fontColor=fff&animation=twinkling"/>
-</p>
+</p>-->
 
 <p align="center">
   <img src="https://github.com/BouglaceMarouane/Koursa/blob/76066e5f1159b8b74f9a3cb8282a004611a2b530/Koursa.png" width="400px" alt="Taxi Animation"/>
