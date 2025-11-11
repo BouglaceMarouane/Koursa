@@ -105,17 +105,17 @@ Total Fare = 27.5 DH
 
 | Splash Screen | Onboarding Screen |
 |:-----------------:|:-----------------:|
-| <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/splash.png" alt="Splash Screen" width="300"/> | <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/onboarding.png" alt="Onboarding Screen" width="300"/> |
+| <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-09%20at%2015.04.54.jpeg" alt="Splash Screen" width="300"/> | <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28.jpeg" alt="Onboarding Screen" width="300"/> |
 | 🌟 *Splash Screen – First app impression with logo animation.* | 🚀 *Onboarding Screen – Introduces app features to the user.* |
 
 ---
 
 ### **2. Login & Registration Pages**
 
-| Login Page | Registration Page |
+| Login Page | Sign Up Page |
 |:-----------------:|:-----------------:|
-| <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/login.png" alt="Login Page" width="300"/> | <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/register.png" alt="Registration Page" width="300"/> |
-| 🔑 *Login Page – Secure login for drivers.* | 📝 *Registration Page – Allows new drivers to create an account.* |
+| <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28%20(2).jpeg" alt="Login Page" width="300"/> | <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28%20(1).jpeg" alt="Registration Page" width="300"/> |
+| 🔑 *Login Page – Secure login for drivers.* | 📝 *Sign Up Page – Allows new drivers to create an account.* |
 
 ---
 
@@ -123,8 +123,8 @@ Total Fare = 27.5 DH
 
 | Taxi Counter | Google Map |
 |:-----------------:|:-----------------:|
-| <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/compteur.png" alt="Taxi Counter" width="300"/> | <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/carte.png" alt="Google Map" width="300"/> |
-| 💰 *Taxi Counter – Real-time distance, time, and fare calculation.* | 🗺️ *Google Map – Displays live location of the driver.* |
+| <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28%20(3).jpeg" alt="Taxi Counter" width="300"/> | <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-09%20at%2018.10.29.jpeg" alt="Google Map" width="300"/> |
+| 💰 *Meter – Real-time distance, time, and fare calculation.* | 🗺️ *Map – Displays live location of the driver.* |
 
 ---
 
@@ -132,7 +132,7 @@ Total Fare = 27.5 DH
 
 | Driver Profile |
 |:-----------------:|
-| <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/profile.png" alt="Driver Profile" width="300"/> |
+| <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28%20(4).jpeg" alt="Driver Profile" width="300"/> |
 | 👤 *Driver Profile – Displays personal information and QR code for each driver.* |
 
 
