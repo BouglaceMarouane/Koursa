@@ -93,3 +93,17 @@ Total Fare = Base Fare + (Distance × RatePerKm) + (Time × RatePerMinute)
 Example:
 Total Fare = 2.5 + (10 × 1.5) + (20 × 0.5)
 Total Fare = 27.5 DH
+```
+
+## 🧰 Technologies Used
+
+<div align="center">
+
+![Kotlin](https://img.shields.io/badge/Kotlin-Android-blueviolet?style=for-the-badge&logo=kotlin&logoColor=white)
+![Google Maps](https://img.shields.io/badge/Google%20Maps-API-red?style=for-the-badge&logo=googlemaps&logoColor=white)
+![Android Studio](https://img.shields.io/badge/Android%20Studio-IDE-green?style=for-the-badge&logo=androidstudio&logoColor=white)
+![EasyPermissions](https://img.shields.io/badge/EasyPermissions-Library-lightgrey?style=for-the-badge)
+![Notifications](https://img.shields.io/badge/Android-Notifications-blue?style=for-the-badge&logo=android&logoColor=white)
+![Localization](https://img.shields.io/badge/Multilingual-FR|EN|AR-yellow?style=for-the-badge)
+
+</div>
