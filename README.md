@@ -34,8 +34,7 @@
 
 ## ✨ About Koursa
 
-**Koursa** is a smart **Android taxi meter** app designed to simulate real-world taxi tracking and fare calculation.  
-It combines **real-time GPS tracking**, **dynamic pricing**, and **driver profile management** — wrapped in a smooth and professional design.
+**Koursa** is a smart **Android taxi meter** app designed to simulate real-world taxi tracking and fare calculation. It combines **real-time GPS tracking**, **dynamic pricing**, and **driver profile management** — wrapped in a smooth and professional design.
 
 <p align="center">
   <img src="https://media.giphy.com/media/xUOwGfpWxeCAd0Y1fi/giphy.gif" width="600px" alt="Map Animation"/>
