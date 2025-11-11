@@ -101,14 +101,40 @@ Total Fare = 27.5 DH
 
 ---
 
+### **1. Splash & Onboarding Screens**
+
+| Splash Screen | Onboarding Screen |
+|:-----------------:|:-----------------:|
+| <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/splash.png" alt="Splash Screen" width="300"/> | <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/onboarding.png" alt="Onboarding Screen" width="300"/> |
+| 🌟 *Splash Screen – First app impression with logo animation.* | 🚀 *Onboarding Screen – Introduces app features to the user.* |
+
+---
+
 ### **2. Login & Registration Pages**
 
 | Login Page | Registration Page |
 |:-----------------:|:-----------------:|
-| <img src="https://github.com/BouglaceMarouane/Application-Gestion-Examen/blob/46fda12b1ae5c9713812f89aa893d78ddc66c053/images/login.png" alt="Login Page" width="300"/> | <img src="https://github.com/BouglaceMarouane/Application-Gestion-Examen/blob/46fda12b1ae5c9713812f89aa893d78ddc66c053/images/register.png" alt="Registration Page" width="300"/> |
-| 🔑 *Login Page – Secure login for administrators, teachers, and students.* | 📝 *Registration Page – Allows students to register with their details.* |
+| <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/login.png" alt="Login Page" width="300"/> | <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/register.png" alt="Registration Page" width="300"/> |
+| 🔑 *Login Page – Secure login for drivers.* | 📝 *Registration Page – Allows new drivers to create an account.* |
 
 ---
+
+### **3. Main Features**
+
+| Taxi Counter | Google Map |
+|:-----------------:|:-----------------:|
+| <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/compteur.png" alt="Taxi Counter" width="300"/> | <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/carte.png" alt="Google Map" width="300"/> |
+| 💰 *Taxi Counter – Real-time distance, time, and fare calculation.* | 🗺️ *Google Map – Displays live location of the driver.* |
+
+---
+
+### **4. Driver Profile**
+
+| Driver Profile |
+|:-----------------:|
+| <img src="https://github.com/yourusername/Koursa/blob/main/screenshots/profile.png" alt="Driver Profile" width="300"/> |
+| 👤 *Driver Profile – Displays personal information and QR code for each driver.* |
+
 
 ---
 
