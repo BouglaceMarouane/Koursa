@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="https://media.giphy.com/media/fxSwrPOlY3l3I/giphy.gif" width="200px" alt="Taxi Animation"/>
+  <img src="https://github.com/BouglaceMarouane/Koursa/blob/76066e5f1159b8b74f9a3cb8282a004611a2b530/Koursa.png" width="200px" alt="Taxi Animation"/>
 </p>
 
 <div align="center">
