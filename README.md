@@ -105,7 +105,7 @@ Total Fare = 27.5 DH
 
 | Splash Screen | Onboarding Screen |
 |:-----------------:|:-----------------:|
-| <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-09%20at%2015.04.54.jpeg" alt="Splash Screen" width="300"/> | <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28.jpeg" alt="Onboarding Screen" width="300"/> |
+| <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-09%20at%2015.04.54.jpeg" alt="Splash Screen" width="50%"/> | <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28.jpeg" alt="Onboarding Screen" width="50%"/> |
 | 🌟 *Splash Screen – First app impression with logo animation.* | 🚀 *Onboarding Screen – Introduces app features to the user.* |
 
 ---
@@ -123,7 +123,7 @@ Total Fare = 27.5 DH
 
 | Taxi Counter | Google Map |
 |:-----------------:|:-----------------:|
-| <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28%20(3).jpeg" alt="Taxi Counter" width="300"/> | <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-09%20at%2018.10.29.jpeg" alt="Google Map" width="300"/> |
+| <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28%20(3).jpeg" alt="Taxi Counter" width="50%"/> | <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-09%20at%2018.10.29.jpeg" alt="Google Map" width="50%"/> |
 | 💰 *Meter – Real-time distance, time, and fare calculation.* | 🗺️ *Map – Displays live location of the driver.* |
 
 ---
@@ -132,9 +132,8 @@ Total Fare = 27.5 DH
 
 | Driver Profile |
 |:-----------------:|
-| <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28%20(4).jpeg" alt="Driver Profile" width="300"/> |
-| 👤 *Driver Profile – Displays personal information and QR code for each driver.* |
-
+| <div align="center"><img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28%20(4).jpeg" alt="Driver Profile" width="50%"/></div> |
+| <div align="center">👤 <em>Driver Profile – Displays personal information and QR code for each driver.</em></div> |
 
 ---
 
