@@ -1,7 +1,7 @@
 # 🚖 Koursa — Smart Taxi Meter App 🌍
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=FFD700&height=100&section=header&text=Koursa%20🚖&fontSize=45&fontColor=000&animation=twinkling"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=FFD700&height=100&section=header&text=Koursa%20🚖&fontSize=45&fontColor=fff&animation=twinkling"/>
 </p>
 
 <p align="center">
