@@ -147,6 +147,29 @@ Total Fare = 27.5 DH
 
 ---
 
+🚧 Challenges Faced
+
+During the development of Koursa, several technical and functional challenges were encountered. Overcoming these obstacles helped deepen the understanding of mobile development processes and improve the final quality of the project.
+
+1. Google Maps API Configuration
+Integrating the Google Maps API required precise configuration of the API key, including proper setup in the AndroidManifest.xml and the Google Cloud Console. Map display issues were resolved by verifying permissions and usage restrictions of the key.
+
+2. Real-Time Fare & Distance Synchronization
+Updating the fare and distance in real time on the UI without delay was challenging. Proper thread management and UI update functions in Kotlin were implemented to ensure smooth synchronization.
+
+3. Database Management
+Problems arose while storing and retrieving driver accounts. These were solved by adjusting the Room database structure and optimizing data access queries.
+
+4. Responsive UI Across Devices
+Ensuring the app displays correctly on different screen sizes required careful UI adjustments. Constraints and adaptive dimension values were applied to make the interface responsive.
+
+5. Debugging & Optimization
+Minor performance and compatibility issues required multiple testing and debugging phases to guarantee smooth execution on all devices.
+
+Through careful research, consulting official documentation, and extensive testing, these challenges were progressively overcome, resulting in a stable, efficient, and fully functional application aligned with the project’s initial objectives.
+
+---
+
 ## 🛠️ Installation & Setup
 
 1️⃣ Clone the Repository
