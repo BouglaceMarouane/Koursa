@@ -129,6 +129,22 @@ Add your Google Maps API Key in AndroidManifest.xml (inside the <application> ta
 4️⃣ Run the App
 - Connect an Android device or start an emulator.
 - Click ▶️ Run to start Koursa.
+
+---
+
+## 🧭 Required Permissions
+
+Ensure the following permissions are included in your AndroidManifest.xml:
+```code
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+<uses-permission android:name="android.permission.INTERNET"/>
+```
+
+---
+
+## 📸 Screenshots
+
 ---
 
 ## 🤝 Contributing
