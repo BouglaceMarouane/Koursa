@@ -66,7 +66,7 @@
 - Displays **total fare**, **distance**, and **duration**
 - Custom notification layout using `NotificationCompat`
 
-### 👨‍✈️ **Driver Profile + QR Code**
+### 👨‍✈️🚕 **Driver Profile + QR Code**
 - Shows driver info (name, age, license type)
 - Generates a **QR Code** containing driver data
 - Professional profile card design
