@@ -114,7 +114,7 @@ Total Fare = 27.5 DH
 
 | Login Page | Sign Up Page |
 |:-----------------:|:-----------------:|
-| <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28%20(2).jpeg" alt="Login Page" width="300"/> | <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28%20(1).jpeg" alt="Registration Page" width="300"/> |
+| <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28%20(2).jpeg" alt="Login Page" width="50%"/> | <img src="https://github.com/BouglaceMarouane/Koursa/blob/9bca9299dbedc5ee5956cc5ecf246b7c3ed9f60b/WhatsApp%20Image%202025-11-11%20at%2023.40.28%20(1).jpeg" alt="Registration Page" width="50%"/> |
 | 🔑 *Login Page – Secure login for drivers.* | 📝 *Sign Up Page – Allows new drivers to create an account.* |
 
 ---
