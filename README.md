@@ -99,11 +99,19 @@ Total Fare = 27.5 DH
 
 <div align="center">
 
-![Kotlin](https://img.shields.io/badge/Kotlin-Android-blueviolet?style=for-the-badge&logo=kotlin&logoColor=white)
-![Google Maps](https://img.shields.io/badge/Google%20Maps-API-red?style=for-the-badge&logo=googlemaps&logoColor=white)
-![Android Studio](https://img.shields.io/badge/Android%20Studio-IDE-green?style=for-the-badge&logo=androidstudio&logoColor=white)
-![EasyPermissions](https://img.shields.io/badge/EasyPermissions-Library-lightgrey?style=for-the-badge)
-![Notifications](https://img.shields.io/badge/Android-Notifications-blue?style=for-the-badge&logo=android&logoColor=white)
-![Localization](https://img.shields.io/badge/Multilingual-FR|EN|AR-yellow?style=for-the-badge)
+![Kotlin](https://img.shields.io/badge/Kotlin-Android-7F52FF?logo=kotlin&logoColor=white) ![Google Maps API](https://img.shields.io/badge/Google_Maps-API-4285F4?logo=googlemaps&logoColor=white) ![Fused Location](https://img.shields.io/badge/Fused_Location-GPS-34A853?logo=googleplay&logoColor=white) ![Room](https://img.shields.io/badge/Room-Database-42A5F5?logo=sqlite&logoColor=white) ![Retrofit](https://img.shields.io/badge/Retrofit-Networking-square?logo=square&logoColor=white) ![Notifications](https://img.shields.io/badge/Notifications-Local_Push-FF9800?logo=android&logoColor=white) ![LottieFiles](https://img.shields.io/badge/LottieFiles-Animations-00DDB3?logo=lottiefiles&logoColor=white) ![ZXing](https://img.shields.io/badge/ZXing-QR_Code-000000?logo=android&logoColor=white)
+
+update this links with the tech & tools I will provide 
+
+Kotlin: Main language for Android development.
+Google Maps API: For displaying maps and managing markers.
+Fused Location Provider API: For retrieving GPS positions.
+Room Database: Local storage of trip data.
+Retrofit: Network communication with servers.
+local notifications: Push notifications.
+lotifile
+zxing for qrcode
+
+if something duplicate don't use it
 
 </div>
